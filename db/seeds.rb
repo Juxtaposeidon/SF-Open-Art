@@ -12,10 +12,12 @@ require 'json'
 source = JSON.load(open("https://data.sfgov.org/resource/zfw6-95su.json"))
 
 source.each do |item|
-  start = item["geometry"].index("[")
-  finish = item["geometry"].index("]")
-  coords = item["geometry"][start+1..finish-1].split(",")
+  # p item["geometry"].index("[")
+  start = item["geometry"].index("[").to_i + 1
+  finish = item["geometry"].index("]").to_i - 1
+  coords = item["geometry"][start..finish].split(",")
   lat = coords[1]
   long = coords[0]
   Place.create(artist: item["artist"], latitude: lat, longitude: long, title: item["title"], location: item["location_description"])
 end
+Place.find(1).delete
