@@ -2,10 +2,10 @@ class CreatePlaces < ActiveRecord::Migration
   def change
     create_table :places do |t|
       t.string :artist
-      t.string :latitude
-      t.string :longitude
+      t.float :latitude
+      t.float :longitude
       t.string :title
-      t.string :location
+      t.string :address
     end
   end
 end

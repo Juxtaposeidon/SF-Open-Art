@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20151226211024) do
 
   create_table "places", force: :cascade do |t|
     t.string "artist"
-    t.string "latitude"
-    t.string "longitude"
+    t.float  "latitude"
+    t.float  "longitude"
     t.string "title"
-    t.string "location"
+    t.string "address"
   end
 
 end

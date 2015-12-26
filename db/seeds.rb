@@ -18,6 +18,7 @@ source.each do |item|
   coords = item["geometry"][start..finish].split(",")
   lat = coords[1]
   long = coords[0]
-  Place.create(artist: item["artist"], latitude: lat, longitude: long, title: item["title"], location: item["location_description"])
+  Place.create(artist: item["artist"], latitude: lat.to_f, longitude: long.to_f, title: item["title"])
+  sleep(0.5)
 end
 Place.find(1).delete
