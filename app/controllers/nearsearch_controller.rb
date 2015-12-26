@@ -1,0 +1,2 @@
+class NearsearchController < ApplicationController
+end

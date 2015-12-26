@@ -1,0 +1,2 @@
+module FarsearchHelper
+end
