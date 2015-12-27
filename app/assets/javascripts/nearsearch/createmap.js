@@ -1,14 +1,15 @@
 $(document).ready(function() {
-  var map = new initMap()
+  var map
   var startlat = 0
   var startlong = 0
+  initMap();
 
   function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
       zoom: 13,
     });
-    return map;
   }
+
   navigator.geolocation.getCurrentPosition(function (position){
   // initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   // map.setCenter(initialLocation)
