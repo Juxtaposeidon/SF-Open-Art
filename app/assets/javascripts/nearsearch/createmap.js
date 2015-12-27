@@ -10,21 +10,13 @@ $(document).ready(function() {
     });
   }
 
-  navigator.geolocation.getCurrentPosition(function (position){
-  // initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  // map.setCenter(initialLocation)
-  startlat = position.coords.latitude
-  startlong = position.coords.longitude
-  displayRoute();
-  });
-
   function displayRoute() {
     console.log(startlat)
     var start = new google.maps.LatLng(startlat, startlong);
     var end = new google.maps.LatLng($('#map').data('latitude'), $('#map').data('longitude'));
 
-    var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
-    directionsDisplay.setMap(map); // map should be already initialized.
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
     var request = {
         origin : start,
         destination : end,
@@ -36,6 +28,14 @@ $(document).ready(function() {
             directionsDisplay.setDirections(response);
         }
     });
-}
+  }
+
+  navigator.geolocation.getCurrentPosition(function (position){
+  // initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  // map.setCenter(initialLocation)
+  startlat = position.coords.latitude
+  startlong = position.coords.longitude
+  displayRoute();
+  });
 
 });
