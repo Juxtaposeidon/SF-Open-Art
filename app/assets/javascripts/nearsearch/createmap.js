@@ -5,7 +5,7 @@ $(document).ready(function() {
     });
     return map;
   }
-
+  console.log($('#map').data('longitude'))
   var map = new initMap()
   navigator.geolocation.getCurrentPosition(function (position){
   initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);

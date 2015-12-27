@@ -2,7 +2,6 @@ $(document).ready(function() {
   navigator.geolocation.getCurrentPosition(function (position){
   findNearEvent(position)
   });
-
   function findNearEvent(location){
     var position = {
       "lat" : location.coords.latitude,
