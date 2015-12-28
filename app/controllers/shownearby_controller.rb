@@ -10,9 +10,9 @@ class ShownearbyController < ApplicationController
   end
 
   def locate
-    locationdata = Geocoder.search(params["address"])
-    locationlat = locationdata[0].data["geometry"]["location"]["lat"]
-    locationlong = locationdata[0].data["geometry"]["location"]["lng"]
+    locationdata = Place.find(params["location"])
+    locationlat = locationdata.latitude
+    locationlong = locationdata.longitude
     render :json => {
       :lat => locationlat,
       :long => locationlong

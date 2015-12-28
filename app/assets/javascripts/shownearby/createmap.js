@@ -1,15 +1,37 @@
 $(document).ready(function() {
   var map;
+  var startlat;
+  var startlong;
+  var directionsDisplay = new google.maps.DirectionsRenderer();
+
+
+  function displayRoute(end) {
+    var start = new google.maps.LatLng(startlat, startlong);
+    directionsDisplay.setMap(map);
+    var request = {
+        origin : start,
+        destination : end,
+        travelMode : google.maps.TravelMode.DRIVING
+    };
+    var directionsService = new google.maps.DirectionsService();
+    directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+        }
+    });
+  }
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 13,
     });
   }
+
   initMap();
 
   navigator.geolocation.getCurrentPosition(function (position) {
+  startlat = position.coords.latitude
+  startlong = position.coords.longitude
   initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  dropMarker(position.coords.latitude, position.coords.longitude, "!")
   map.setCenter(initialLocation)});
 
   function dropMarker(lati, longi, symbol){
@@ -24,7 +46,8 @@ $(document).ready(function() {
   $(".locations").on("click", "a", function(event){
     event.preventDefault();
     var location = {
-      "address" : $(this).next().next().next(".address").text()
+      "resultno" : $(this).prev().prev().prev().text(),
+      "location" : $(this).data()["placeid"]
     }
     $.ajax({
       url: 'shownearby/locate',
@@ -32,7 +55,8 @@ $(document).ready(function() {
       data: location
     })
     .done(function(place){
-      console.log(place)
+      directionsDisplay.set('directions', null)
+      displayRoute(new google.maps.LatLng(place["lat"], place["long"]))
     })
   })
 });

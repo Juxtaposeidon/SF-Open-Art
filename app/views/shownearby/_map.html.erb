@@ -3,7 +3,7 @@
 <div class = "locations">
 <% @nearbyspots.each_with_index do |place, index| %>
 <p>
-  <%= index+1 %>. Piece Title: <%= place.title%>
+  <span class="index"><%= index+1 %></span>. Piece Title: <%= place.title%>
   <br>
   Artist: <%= place.artist%>
   <br>
