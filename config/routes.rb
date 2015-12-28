@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'nearsearch' => 'nearsearch#index'
   get 'nearsearch/locate' => 'nearsearch#locate'
   get 'farsearch' => 'farsearch#index'
+  get 'shownearby' => 'shownearby#index'
+  get 'shownearby/locate' => 'shownearby#locate'
+  get 'shownearby/load' => 'shownearby#load'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

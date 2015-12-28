@@ -1,0 +1,13 @@
+<%= javascript_include_tag 'shownearby/createmap.js'%>
+<div id="map"></div>
+<ol class = "locations">
+<% @nearbyspots.each do |place| %>
+<li>
+  <a href="directions">Piece Title: <%= place.title%></a>
+  <br>
+  Artist: <%= place.artist%>
+  <br>
+  Address: <span class = "address"><%= place.address%></span>
+</li>
+<%end%>
+</ol>

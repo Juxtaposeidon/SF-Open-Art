@@ -12,7 +12,8 @@ class NearsearchController < ApplicationController
     render :json => {
       :partial => render_to_string(:partial => 'nearsearch/map')
     }
-
   end
+
+  def
 
 end
