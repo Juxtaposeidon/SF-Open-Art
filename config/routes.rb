@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'shownearby' => 'shownearby#index'
   get 'shownearby/locate' => 'shownearby#locate'
   get 'shownearby/load' => 'shownearby#load'
+  get 'shownearby/nextresults' => 'shownearby#nextresults'
+  get 'shownearby/prevresults' => 'shownearby#prevresults'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

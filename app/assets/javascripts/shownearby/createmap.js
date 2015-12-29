@@ -43,7 +43,7 @@ $(document).ready(function() {
     return marker;
   }
 
-  $(".locations").on("click", "a", function(event){
+  $("#locations").on("click", ".address", function(event){
     event.preventDefault();
     var location = {
       "resultno" : $(this).prev().prev().prev().text(),
@@ -59,4 +59,11 @@ $(document).ready(function() {
       displayRoute(new google.maps.LatLng(place["lat"], place["long"]))
     })
   })
+  $("#locations").on("click", "#next", function(event){
+    event.preventDefault();
+    $.ajax({
+      url: 'shownearby/nextresults',
+      method: "GET"
+    })
+  });
 });

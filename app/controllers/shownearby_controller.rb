@@ -3,7 +3,8 @@ class ShownearbyController < ApplicationController
   end
 
   def load
-    @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[0..9]
+    @resultspage = 0
+    @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultspage..@resultspage+9]
     render :json => {
       :partial => render_to_string(:partial => 'shownearby/map')
     }
@@ -17,6 +18,13 @@ class ShownearbyController < ApplicationController
       :lat => locationlat,
       :long => locationlong
     }
+  end
+
+  def nextresults
+    @resultspage += 9
+  end
+
+  def prevresults
   end
 
 end
