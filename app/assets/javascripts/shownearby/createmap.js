@@ -3,7 +3,7 @@ $(document).ready(function() {
   var startlat;
   var startlong;
   var directionsDisplay = new google.maps.DirectionsRenderer();
-
+  var marker
 
   function displayRoute(end) {
     var start = new google.maps.LatLng(startlat, startlong);
@@ -22,7 +22,7 @@ $(document).ready(function() {
   }
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 13,
+      zoom: 16
     });
   }
 
@@ -32,18 +32,18 @@ $(document).ready(function() {
   startlat = position.coords.latitude
   startlong = position.coords.longitude
   initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  dropMarker(position.coords.latitude, position.coords.longitude, "!")
   map.setCenter(initialLocation)});
 
   function dropMarker(lati, longi, symbol){
-    var marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
     map: map,
     position: {lat: lati, lng: longi},
     label: symbol
     });
-    return marker;
   }
 
-  $("#locations").on("click", ".address", function(event){
+  $("#locationframe").on("click", ".address", function(event){
     event.preventDefault();
     var location = {
       "location" : $(this).data()["placeid"]
@@ -54,6 +54,7 @@ $(document).ready(function() {
       data: location
     })
     .done(function(place){
+      marker.setMap(null)
       directionsDisplay.set('directions', null)
       displayRoute(new google.maps.LatLng(place["lat"], place["long"]))
     })
