@@ -37,6 +37,15 @@ class ShownearbyController < ApplicationController
   end
 
   def prevresults
+    @@resultspage -= 10
+    @resulttrack = @@resultspage
+    @showprev = @@resultspage > 0
+    @shownext = @@resultspage < 90
+    @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
+    p @nearbyspots
+    render :json => {
+      :partial => render_to_string(:partial => 'shownearby/locations')
+    }
   end
 
 

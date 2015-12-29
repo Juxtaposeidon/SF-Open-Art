@@ -58,6 +58,7 @@ $(document).ready(function() {
       displayRoute(new google.maps.LatLng(place["lat"], place["long"]))
     })
   })
+
   $("#locationframe").on("click", "#next", function(event){
     event.preventDefault();
     $.ajax({
@@ -68,4 +69,16 @@ $(document).ready(function() {
       $('#locationframe').html(results["partial"])
     })
   });
+
+  $("#locationframe").on("click", "#prev", function(event){
+    event.preventDefault();
+    $.ajax({
+      url: 'shownearby/prevresults',
+      method: "GET",
+    })
+    .done(function(results){
+      $('#locationframe').html(results["partial"])
+    })
+  });
+
 });
