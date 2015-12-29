@@ -1,15 +1,18 @@
 <div id = "locations">
 <% @nearbyspots.each_with_index do |place, index| %>
 <p>
-  <span class="index"><%= index+1 %></span>. Piece Title: <%= place.title%>
+  <%= @resulttrack + index + 1 %>. Piece Title: <%= place.title%>
   <br>
   Artist: <%= place.artist%>
   <br>
   <%=link_to place.address, root_path, data: {placeid: place.id}, class: "address" %>
 </p>
 <%end%>
-
+<%if @showprev %>
   <%=link_to "Previous", root_path, id: "prev"%>
+<%end%>
+<%if @shownext %>
+  <%=link_to "Next", root_path, id: "next"%>
+<%end%>
 
-<%=link_to "Next", root_path, id: "next"%>
 </div>
