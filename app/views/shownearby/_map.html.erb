@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'shownearby/createmap.js'%>
-<div id="map"></div>
-<div class = "locations">
+<div id = "map"></div>
+<div id = "locations">
 <% @nearbyspots.each_with_index do |place, index| %>
 <p>
   <span class="index"><%= index+1 %></span>. Piece Title: <%= place.title%>
