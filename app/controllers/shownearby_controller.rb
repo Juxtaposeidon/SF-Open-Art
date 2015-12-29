@@ -3,8 +3,9 @@ class ShownearbyController < ApplicationController
   end
 
   def load
-    @resultspage = 0
-    @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultspage..@resultspage+9]
+    @@resultspage = 0
+    @@allspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
+    @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@@resultspage..@@resultspage+9]
     render :json => {
       :partial => render_to_string(:partial => 'shownearby/map')
     }
@@ -21,7 +22,12 @@ class ShownearbyController < ApplicationController
   end
 
   def nextresults
-    @resultspage += 9
+    @@resultspage += 10
+    @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
+    p @nearbyspots
+    render :json => {
+      :partial => render_to_string(:partial => 'shownearby/locations')
+    }
   end
 
   def prevresults

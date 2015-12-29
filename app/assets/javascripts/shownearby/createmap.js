@@ -46,7 +46,6 @@ $(document).ready(function() {
   $("#locations").on("click", ".address", function(event){
     event.preventDefault();
     var location = {
-      "resultno" : $(this).prev().prev().prev().text(),
       "location" : $(this).data()["placeid"]
     }
     $.ajax({
@@ -59,11 +58,14 @@ $(document).ready(function() {
       displayRoute(new google.maps.LatLng(place["lat"], place["long"]))
     })
   })
-  $("#locations").on("click", "#next", function(event){
+  $("#locationframe").on("click", "#next", function(event){
     event.preventDefault();
     $.ajax({
       url: 'shownearby/nextresults',
-      method: "GET"
+      method: "GET",
+    })
+    .done(function(results){
+      $('#locationframe').html(results["partial"])
     })
   });
 });
