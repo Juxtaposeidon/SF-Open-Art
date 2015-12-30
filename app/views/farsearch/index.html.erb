@@ -1,0 +1,5 @@
+<%= form_tag("/farsearch/search", method: "get") do %>
+  <%= label_tag("Search for:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>
