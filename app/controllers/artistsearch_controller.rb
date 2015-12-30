@@ -1,5 +1,6 @@
 class ArtistsearchController < ApplicationController
   def index
+    @artists = Place.select(:artist).map(&:artist).uniq
   end
 
   def show
