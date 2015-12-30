@@ -1,0 +1,8 @@
+<%= javascript_include_tag 'artistsearch/createmap.js'%>
+
+<div id = "artistmap"></div>
+<div id = "artistresults">
+<%@works.each do |item|%>
+<%=item.title%>
+<%end%>
+</div>

@@ -6,6 +6,7 @@ Rails.application.config.assets.precompile += %w( nearsearch/nearsearch.js )
 Rails.application.config.assets.precompile += %w( nearsearch/createmap.js )
 Rails.application.config.assets.precompile += %w( shownearby/createmap.js )
 Rails.application.config.assets.precompile += %w( shownearby/shownearbyload.js )
+Rails.application.config.assets.precompile += %w( artistsearch/createmap.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

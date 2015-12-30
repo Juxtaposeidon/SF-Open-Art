@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
   }
   function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('nearmap'), {
       zoom: 16
     });
   }

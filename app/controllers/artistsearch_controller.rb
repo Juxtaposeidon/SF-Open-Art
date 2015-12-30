@@ -4,6 +4,8 @@ class ArtistsearchController < ApplicationController
 
   def show
     p params
+    @artist = params[:id]
+    @works = Place.where(artist:@artist)
   end
 
 end
