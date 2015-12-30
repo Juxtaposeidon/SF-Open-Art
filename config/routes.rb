@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'shownearby/load' => 'shownearby#load'
   get 'shownearby/nextresults' => 'shownearby#nextresults'
   get 'shownearby/prevresults' => 'shownearby#prevresults'
-  resources :artistsearch
+  resources :artistsearch, :constraints => { :id => /.*/ }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

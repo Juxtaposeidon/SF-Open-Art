@@ -13,8 +13,8 @@ $(document).ready(function() {
     });
   }
   function changeMarkerPosition(tag, lat, lng) {
-      var latlng = new google.maps.LatLng(lat, lng);
-      tag.setPosition(latlng);
+    var latlng = new google.maps.LatLng(lat, lng);
+    tag.setPosition(latlng);
   }
   $('.artname').click(function(event){
     event.preventDefault();

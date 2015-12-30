@@ -6,6 +6,7 @@ class ArtistsearchController < ApplicationController
     p params
     @artist = params[:id]
     @works = Place.where(artist:@artist)
+    @name = @artist.split(",")
   end
 
 end
