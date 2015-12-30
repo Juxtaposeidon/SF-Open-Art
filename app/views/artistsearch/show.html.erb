@@ -3,6 +3,8 @@
 <div id = "artistmap"></div>
 <div id = "artistresults">
 <%@works.each do |item|%>
-<%=item.title%>
+<p>
+  <%=link_to item.title, item.title, class: "artname", data: {latitude: item.latitude, longitude: item.longitude}%>
+</p>
 <%end%>
 </div>
