@@ -8,7 +8,24 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE-897CDl9CnFtZDVIQEQkd409ibKqcmQ" type="text/javascript"></script>
 </head>
 <body>
-<header><%=image_tag "artlogo.png", id: "logo"%></header>
+<header>
+<%=image_tag "artlogo.png", id: "logo"%>
+<div id="navbar">
+  <table id="menutable">
+  <tr id="menurow">
+    <td class="menuitem">
+      test
+    </td>
+    <td class="menuitem">
+      test2
+    </td>
+    <td class="menuitem">
+      test3
+    </td>
+  </tr>
+</table>
+</div>
+</header>
 <div id="main">
 <%= yield %>
 </div>
