@@ -22,7 +22,7 @@ $(document).ready(function() {
     map.setZoom(16)
     changeMarkerPosition(marker, $(this).data('latitude'), $(this).data('longitude'))
     map.setCenter(new google.maps.LatLng($(this).data('latitude'), $(this).data('longitude')));
-    infowindow.setContent($(this).data('address'))
+    infowindow.setContent("<i>"+ $(this).text() + "</i>: " + $(this).data('address'))
     infowindow.open(map,marker);
     scroll(0,0)
   })

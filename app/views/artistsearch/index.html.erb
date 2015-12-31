@@ -1,5 +1,25 @@
-<%@artists.each do |artist|%>
-  <p>
-    <%=link_to artist, artistsearch_path(artist)%>
-  </p>
-<%end%>
+<table id="artisttable">
+  <tr>
+    <td>
+      <%@artists1.each do |artist|%>
+        <p>
+          <%=link_to artist, artistsearch_path(artist)%>
+        </p>
+      <%end%>
+    </td>
+    <td>
+      <%@artists2.each do |artist|%>
+        <p>
+          <%=link_to artist, artistsearch_path(artist)%>
+        </p>
+      <%end%>
+    </td>
+    <td>
+      <%@artists3.each do |artist|%>
+        <p>
+          <%=link_to artist, artistsearch_path(artist)%>
+        </p>
+      <%end%>
+    </td>
+  </tr>
+</table>

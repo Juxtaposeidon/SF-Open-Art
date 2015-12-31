@@ -8,6 +8,7 @@ $(document).ready(function() {
     map: map,
     label: "A"
   });
+
   function changeMarkerPosition(tag, lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
     tag.setPosition(latlng);
@@ -45,7 +46,7 @@ $(document).ready(function() {
     event.preventDefault();
     marker.setMap(null)
     directionsDisplay.set('directions', null)
-    displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')))
+    displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));
   })
 
   $("#locationframe").on("click", "#next", function(event){
