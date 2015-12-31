@@ -42,11 +42,21 @@ header{
 
 .menuitem{
   color: white;
+  font-family: verdana;
+  font-size: 1.1em;
+
 }
 
-#menurow{
-  height:10px;
+.menuitem a{
+  text-decoration: none;
+  color:white;
+  padding: 30px;
 }
+
+.menuitem a:hover{
+  outline: 1px solid white;
+}
+
 #menutable{
   position: relative;
   top: 50%;
