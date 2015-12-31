@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get 'nearsearch' => 'nearsearch#index'
-  get 'nearsearch/locate' => 'nearsearch#locate'
   get 'farsearch' => 'farsearch#index'
   get 'farsearch/search' => 'farsearch#search'
 

@@ -1,10 +1,17 @@
 $(document).ready(function() {
   var map;
+  initMap();
   var startlat;
   var startlong;
   var directionsDisplay = new google.maps.DirectionsRenderer();
-  var marker
-
+  var marker = new google.maps.Marker({
+    map: map,
+    label: "A"
+  });
+  function changeMarkerPosition(tag, lat, lng) {
+    var latlng = new google.maps.LatLng(lat, lng);
+    tag.setPosition(latlng);
+  }
   function displayRoute(end) {
     var start = new google.maps.LatLng(startlat, startlong);
     directionsDisplay.setMap(map);
@@ -26,22 +33,13 @@ $(document).ready(function() {
     });
   }
 
-  initMap();
 
   navigator.geolocation.getCurrentPosition(function (position) {
   startlat = position.coords.latitude
   startlong = position.coords.longitude
   initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  dropMarker(position.coords.latitude, position.coords.longitude, "!")
+  changeMarkerPosition(marker, position.coords.latitude, position.coords.longitude)
   map.setCenter(initialLocation)});
-
-  function dropMarker(lati, longi, symbol){
-    marker = new google.maps.Marker({
-    map: map,
-    position: {lat: lati, lng: longi},
-    label: symbol
-    });
-  }
 
   $("#locationframe").on("click", ".address", function(event){
     event.preventDefault();
