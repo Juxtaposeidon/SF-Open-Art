@@ -5,7 +5,7 @@
   <br>
   Artist: <%= place.artist%> (<%=link_to "Search", artistsearch_path(place.artist) %>)
   <br>
-  <%=link_to place.address, root_path, data: {placeid: place.id}, class: "address" %>
+  <%=link_to place.address, root_path, data: {lat: place.latitude, long: place.longitude}, class: "address" %>
 </p>
 <%end%>
 <%if @showprev %>

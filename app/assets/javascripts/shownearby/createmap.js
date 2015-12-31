@@ -45,19 +45,9 @@ $(document).ready(function() {
 
   $("#locationframe").on("click", ".address", function(event){
     event.preventDefault();
-    var location = {
-      "location" : $(this).data()["placeid"]
-    }
-    $.ajax({
-      url: 'shownearby/locate',
-      method: "GET",
-      data: location
-    })
-    .done(function(place){
-      marker.setMap(null)
-      directionsDisplay.set('directions', null)
-      displayRoute(new google.maps.LatLng(place["lat"], place["long"]))
-    })
+    marker.setMap(null)
+    directionsDisplay.set('directions', null)
+    displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')))
   })
 
   $("#locationframe").on("click", "#next", function(event){

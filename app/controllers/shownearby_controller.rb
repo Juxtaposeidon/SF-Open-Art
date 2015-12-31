@@ -14,16 +14,6 @@ class ShownearbyController < ApplicationController
     }
   end
 
-  def locate
-    locationdata = Place.find(params["location"])
-    locationlat = locationdata.latitude
-    locationlong = locationdata.longitude
-    render :json => {
-      :lat => locationlat,
-      :long => locationlong
-    }
-  end
-
   def nextresults
     @@resultspage += 10
     @resulttrack = @@resultspage
