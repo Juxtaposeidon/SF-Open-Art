@@ -44,6 +44,8 @@ $(document).ready(function() {
 
   $("#locationframe").on("click", ".address", function(event){
     event.preventDefault();
+    $('p').removeClass("selected")
+    $(this).parent().addClass("selected")
     marker.setMap(null)
     directionsDisplay.set('directions', null)
     displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));

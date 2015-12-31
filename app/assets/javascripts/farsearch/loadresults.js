@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   function initMap() {
     map = new google.maps.Map(document.getElementById('resultmap'), {
-      zoom: 16
+      zoom: 13
     });
   }
   function changeMarkerPosition(tag, lat, lng) {
