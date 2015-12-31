@@ -2,12 +2,17 @@
 
 <div id= "resultmap"></div>
 <div id= "results">
-<%@result.each do |item|%>
-<p>
-  <%=link_to item.title, item.title, class: "result", data: {latitude: item.latitude, longitude: item.longitude, address: item.address} %>
-  <br>
-  <%=item.artist%>
-</p>
-
+<%if @getresults%>
+  <%@result.each do |item|%>
+  <p>
+    <%=link_to item.title, item.title, class: "result", data: {latitude: item.latitude, longitude: item.longitude, address: item.address} %>
+    <br>
+    <%=item.artist%>
+  </p>
+  <%end%>
+<%else%>
+  <p>
+    Your search request returns no results. Please try another location.
+  </p>
 <%end%>
 </div>

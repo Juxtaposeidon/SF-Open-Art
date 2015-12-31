@@ -3,12 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #resultmap{
   margin: auto;
-  width: 70%;
+  width: 60%;
   height: 500px;
   border: black solid 1px;
+  float: left;
 }
 
 #results{
+  width:35%;
   margin-top:15px;
   text-align: center;
+  float:right;
 }
