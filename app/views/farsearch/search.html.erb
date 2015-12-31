@@ -1,3 +1,13 @@
+<%= javascript_include_tag 'farsearch/loadresults.js'%>
+
+<div id= "resultmap"></div>
+<div id= "results">
 <%@result.each do |item|%>
-<li><%=item.title%></li>
+<p>
+  <%=link_to item.title, item.title, class: "result", data: {latitude: item.latitude, longitude: item.longitude, address: item.address} %>
+  <br>
+  <%=item.artist%>
+</p>
+
 <%end%>
+</div>
