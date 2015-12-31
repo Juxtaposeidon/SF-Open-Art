@@ -18,7 +18,15 @@ $(document).ready(function() {
   }
   $('.artname').click(function(event){
     event.preventDefault();
+    map.setZoom(16)
     changeMarkerPosition(marker, $(this).data('latitude'), $(this).data('longitude'))
     map.setCenter(new google.maps.LatLng($(this).data('latitude'), $(this).data('longitude')));
+    var infowindow = new google.maps.InfoWindow({
+      content:$(this).data('address')
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map,marker);
+    });
+    scroll(0,0)
   })
 })
