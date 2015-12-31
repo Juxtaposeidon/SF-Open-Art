@@ -7,6 +7,7 @@ $(document).ready(function() {
   var marker = new google.maps.Marker({
     map: map,
   });
+  var infowindow = new google.maps.InfoWindow({});
   function initMap() {
     map = new google.maps.Map(document.getElementById('artistmap'), {
       zoom: 13
@@ -21,12 +22,8 @@ $(document).ready(function() {
     map.setZoom(16)
     changeMarkerPosition(marker, $(this).data('latitude'), $(this).data('longitude'))
     map.setCenter(new google.maps.LatLng($(this).data('latitude'), $(this).data('longitude')));
-    var infowindow = new google.maps.InfoWindow({
-      content:$(this).data('address')
-    });
-    google.maps.event.addListener(marker, 'click', function() {
-      infowindow.open(map,marker);
-    });
+    infowindow.setContent($(this).data('address'))
+    infowindow.open(map,marker);
     scroll(0,0)
   })
 })
