@@ -36,8 +36,9 @@ header{
 }
 
 #navbar{
-  float:right;
-  height:100%;
+  position:fixed;
+  top:50px;
+  right: 0px;
 }
 
 .menuitem{
@@ -62,4 +63,4 @@ header{
   top: 50%;
   transform: translateY(-50%);
   height: 50px;
-  }
+}
