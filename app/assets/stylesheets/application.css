@@ -43,7 +43,6 @@ header{
 
 .menuitem{
   color: white;
-  font-family: verdana;
   font-size: 1.1em;
 
 }
@@ -63,4 +62,8 @@ header{
   top: 50%;
   transform: translateY(-50%);
   height: 50px;
+}
+
+body{
+  font-family: verdana;
 }
