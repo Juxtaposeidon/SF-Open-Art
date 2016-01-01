@@ -19,6 +19,8 @@ source.each do |item|
   lat = coords[1]
   long = coords[0]
   Place.create(artist: item["artist"], latitude: lat.to_f, longitude: long.to_f, title: item["title"])
-  sleep(0.5)
+  sleep(0.3)
 end
 Place.find(1).delete
+dupes = Place.select("MIN(id) as id").group(:title, :artist).collect(&:id)
+Place.where.not(id: dupes).destroy_all
