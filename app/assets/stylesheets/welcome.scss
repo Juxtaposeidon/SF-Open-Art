@@ -4,6 +4,7 @@
 .wrapper{
   margin-left:-8px;
   margin-top:-25px;
+  bottom:0;
   background-image: url("fountainedit.jpg");
   height: 100%;
   width:100%;
@@ -11,10 +12,18 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-size: cover;
-  z-index: 1;
   text-align:center;
   color:white;
-      text-shadow: 2px 2px black;
+  text-shadow: 2px 2px black;
 
+}
+
+#indexbox{
+  margin-top:125px;
+  background-color:rgba(104,104,104,0.5);
+  margin-left:auto;
+  margin-right:auto;
+  width: 50%;
+  height: 30%;
 }
 
