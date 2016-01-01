@@ -7,7 +7,7 @@
   <p>
     <%=link_to item.title, item.title, class: "result", data: {latitude: item.latitude, longitude: item.longitude, address: item.address} %>
     <br>
-    <%=item.artist%>
+    <%=item.artist%> (<%=link_to 'search', artistsearch_path(item.artist)%>)
   </p>
   <%end%>
 <%else%>
