@@ -24,3 +24,7 @@ end
 Place.find(1).delete
 dupes = Place.select("MIN(id) as id").group(:title, :artist).collect(&:id)
 Place.where.not(id: dupes).destroy_all
+Place.where(latitude: 37.7749295, longitude: -122.4194155).destroy_all
+edit1 = Place.where(artist:"Beauchemin, Micheline")
+edit1[0].title = "Untitled"
+edit1[0].save
