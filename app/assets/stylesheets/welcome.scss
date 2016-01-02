@@ -19,11 +19,19 @@
 }
 
 #indexbox{
+font-family:courier;
   margin-top:125px;
   background-color:rgba(104,104,104,0.5);
   margin-left:auto;
   margin-right:auto;
-  width: 50%;
-  height: 30%;
+  width: 60%;
+  padding:10px;
 }
 
+h1{
+  font-size:3em;
+}
+
+h3{
+  font-size:1.25em
+}
