@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShownearbyControllerTest < ActionController::TestCase
+class NearbysearchControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

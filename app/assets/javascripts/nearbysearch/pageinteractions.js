@@ -54,7 +54,7 @@ $(document).ready(function() {
   $("#locationframe").on("click", "#next", function(event){
     event.preventDefault();
     $.ajax({
-      url: 'shownearby/nextresults',
+      url: 'nearbysearch/nextresults',
       method: "GET",
     })
     .done(function(results){
@@ -65,7 +65,7 @@ $(document).ready(function() {
   $("#locationframe").on("click", "#prev", function(event){
     event.preventDefault();
     $.ajax({
-      url: 'shownearby/prevresults',
+      url: 'nearbysearch/prevresults',
       method: "GET",
     })
     .done(function(results){

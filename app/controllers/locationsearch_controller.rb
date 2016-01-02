@@ -1,4 +1,4 @@
-class FarsearchController < ApplicationController
+class LocationsearchController < ApplicationController
   def index
   end
 

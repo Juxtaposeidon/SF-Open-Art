@@ -4,11 +4,11 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( nearsearch/nearsearch.js )
 Rails.application.config.assets.precompile += %w( nearsearch/createmap.js )
-Rails.application.config.assets.precompile += %w( shownearby/createmap.js )
-Rails.application.config.assets.precompile += %w( shownearby/shownearbyload.js )
+Rails.application.config.assets.precompile += %w( nearbysearch/pageinteractions.js )
+Rails.application.config.assets.precompile += %w( nearbysearch/shownearbyload.js )
 Rails.application.config.assets.precompile += %w( artistsearch/createmap.js )
 Rails.application.config.assets.precompile += %w( artlogo.png )
-Rails.application.config.assets.precompile += %w( farsearch/loadresults.js )
+Rails.application.config.assets.precompile += %w( locationsearch/loadresults.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

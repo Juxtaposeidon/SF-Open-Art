@@ -1,4 +1,4 @@
-class ShownearbyController < ApplicationController
+class NearbysearchController < ApplicationController
   def index
   end
 
@@ -10,7 +10,7 @@ class ShownearbyController < ApplicationController
     @@allspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
     @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@@resultspage..@@resultspage+9]
     render :json => {
-      :partial => render_to_string(:partial => 'shownearby/map')
+      :partial => render_to_string(:partial => 'nearbysearch/map')
     }
   end
 
@@ -22,7 +22,7 @@ class ShownearbyController < ApplicationController
     @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
     p @nearbyspots
     render :json => {
-      :partial => render_to_string(:partial => 'shownearby/locations')
+      :partial => render_to_string(:partial => 'nearbysearch/locations')
     }
   end
 
@@ -34,7 +34,7 @@ class ShownearbyController < ApplicationController
     @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
     p @nearbyspots
     render :json => {
-      :partial => render_to_string(:partial => 'shownearby/locations')
+      :partial => render_to_string(:partial => 'nearbysearch/locations')
     }
   end
 

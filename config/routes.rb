@@ -4,14 +4,13 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get 'farsearch' => 'farsearch#index'
-  get 'farsearch/search' => 'farsearch#search'
+  get 'locationsearch' => 'locationsearch#index'
+  get 'locationsearch/search' => 'locationsearch#search'
 
-  get 'shownearby' => 'shownearby#index'
-  get 'shownearby/locate' => 'shownearby#locate'
-  get 'shownearby/load' => 'shownearby#load'
-  get 'shownearby/nextresults' => 'shownearby#nextresults'
-  get 'shownearby/prevresults' => 'shownearby#prevresults'
+  get 'nearbysearch' => 'nearbysearch#index'
+  get 'nearbysearch/load' => 'nearbysearch#load'
+  get 'nearbysearch/nextresults' => 'nearbysearch#nextresults'
+  get 'nearbysearch/prevresults' => 'nearbysearch#prevresults'
   resources :artistsearch, :constraints => { :id => /.*/ }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

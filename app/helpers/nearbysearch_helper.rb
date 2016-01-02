@@ -1,0 +1,2 @@
+module NearbysearchHelper
+end
