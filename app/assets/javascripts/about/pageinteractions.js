@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.slideshow').cycle({
+    $('#slideshow').cycle({
     fx: 'fade',
     timeout:  2500
   });

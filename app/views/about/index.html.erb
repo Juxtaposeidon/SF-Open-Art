@@ -1,9 +1,18 @@
 <%= javascript_include_tag 'about/slider.js'%>
 <%= javascript_include_tag 'about/pageinteractions.js'%>
-<div class="slideshow">
-  <%=image_tag("slide2.jpg")%>
-  <%=image_tag("slide1.jpg")%>
-  <%=image_tag("slide3.jpg")%>
+<div id="slideshow">
   <%=image_tag("slide4.jpg")%>
+  <%=image_tag("slide2.jpg")%>
+  <%=image_tag("slide3.jpg")%>
+  <%=image_tag("slide1.jpg")%>
 
+</div>
+<div id="abouttext">
+<p>
+SF Open Art is a spare time project that documents all open civic artwork in San Francisco with the help of the SF OpenData project. The website calls upon the SF OpenData database to find display locations, titles, and other significant details. All San Francisco maps are created through Google Maps with the aid of the Rails Geocoder gem.
+</p>
+
+<p>
+The project was conceived with the idea of highlighting San Francisco's public artwork through a simple interface. Both tourists and locals can use the website to explore the City's open treasures.
+</p>
 </div>

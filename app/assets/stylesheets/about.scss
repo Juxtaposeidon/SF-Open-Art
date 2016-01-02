@@ -1,12 +1,15 @@
 // Place all the styles related to the about controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.slideshow{
-margin: auto;
+#slideshow{
+float:right;
+width:50%;
+height:auto;
+padding:5px;
 }
 
-.slideshow img{
-padding: 15px;
-background-color: #eee;
-width: 400px;
+
+#abouttext{
+width:42%;
+float:left;
 }

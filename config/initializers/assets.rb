@@ -7,7 +7,6 @@ Rails.application.config.assets.precompile += %w( nearsearch/createmap.js )
 Rails.application.config.assets.precompile += %w( nearbysearch/pageinteractions.js )
 Rails.application.config.assets.precompile += %w( nearbysearch/shownearbyload.js )
 Rails.application.config.assets.precompile += %w( artistsearch/createmap.js )
-Rails.application.config.assets.precompile += %w( artlogo.png )
 Rails.application.config.assets.precompile += %w( about/slider.js )
 Rails.application.config.assets.precompile += %w( about/pageinteractions.js )
 
