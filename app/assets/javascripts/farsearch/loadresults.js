@@ -25,5 +25,6 @@ $(document).ready(function() {
     infowindow.setContent("<i>"+ $(this).text() + "</i>: " + $(this).data('address'))
     infowindow.open(map,marker);
     scroll(0,0)
+    map.setZoom(16)
   })
 });

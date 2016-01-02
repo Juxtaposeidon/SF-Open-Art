@@ -34,7 +34,6 @@ $(document).ready(function() {
     });
   }
 
-
   navigator.geolocation.getCurrentPosition(function (position) {
   startlat = position.coords.latitude
   startlong = position.coords.longitude
@@ -49,6 +48,7 @@ $(document).ready(function() {
     marker.setMap(null)
     directionsDisplay.set('directions', null)
     displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));
+    scroll(0,0)
   })
 
   $("#locationframe").on("click", "#next", function(event){
