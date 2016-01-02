@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'locationsearch' => 'locationsearch#index'
   get 'locationsearch/search' => 'locationsearch#search'
-
   get 'nearbysearch' => 'nearbysearch#index'
   get 'nearbysearch/load' => 'nearbysearch#load'
   get 'nearbysearch/nextresults' => 'nearbysearch#nextresults'
   get 'nearbysearch/prevresults' => 'nearbysearch#prevresults'
+  get 'about' => 'about#index'
   resources :artistsearch, :constraints => { :id => /.*/ }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
