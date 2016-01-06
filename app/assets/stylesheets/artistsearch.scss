@@ -1,0 +1,21 @@
+// Place all the styles related to the artistsearch controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#artistmap{
+  margin: auto;
+  width: 60%;
+  height: 500px;
+  border: black solid 1px;
+  float:left;
+}
+
+#artistresults{
+  width: 35%;
+  margin: auto;
+  text-align:center;
+  float:right;
+}
+
+#artisttable{
+  width:100%
+}

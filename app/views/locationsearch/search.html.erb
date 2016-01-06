@@ -1,0 +1,17 @@
+<%= javascript_include_tag 'locationsearch/loadresults.js'%>
+<div id= "resultmap"></div>
+<div id= "results">
+<%if @getresults%>
+  <%@result.each do |item|%>
+  <p>
+    <%=link_to item.title, item.title, class: "result", data: {latitude: item.latitude, longitude: item.longitude, address: item.address} %>
+    <br>
+    <%=item.artist%> (<%=link_to 'search', artistsearch_path(item.artist)%>)
+  </p>
+  <%end%>
+<%else%>
+  <p>
+    Your search request returns no results. Please try entering another location.
+  </p>
+<%end%>
+</div>

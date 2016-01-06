@@ -1,0 +1,17 @@
+<div id = "locations">
+  <% @nearbyspots.each_with_index do |place, index| %>
+  <p class = "nearbylocation">
+    <%= @resultindex + index %>. Piece Title: <%= place.title%>
+    <br>
+    Artist: <%= place.artist%> (<%=link_to "Search", artistsearch_path(place.artist) %>)
+    <br>
+    <%=link_to place.address, root_path, data: {lat: place.latitude, long: place.longitude}, class: "address" %>
+  </p>
+  <%end%>
+  <%if @showprev %>
+    <%=link_to "Previous", root_path, id: "prev"%>
+  <%end%>
+  <%if @shownext %>
+    <%=link_to "Next", root_path, id: "next"%>
+  <%end%>
+</div>

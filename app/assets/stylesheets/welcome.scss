@@ -1,0 +1,36 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper{
+  margin-left:-8px;
+  margin-top:-25px;
+  bottom:0;
+  background-image: url("fountainedit.jpg");
+  height: 100%;
+  width:100%;
+  position:absolute;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+  text-align:center;
+  color:white;
+  text-shadow: 2px 2px black;
+}
+
+#indexbox{
+font-family:Palatino;
+  margin-top:125px;
+  background-color:rgba(104,104,104,0.5);
+  margin-left:auto;
+  margin-right:auto;
+  width: 60%;
+  padding:10px;
+}
+
+h1{
+  font-size:3em;
+}
+
+h3{
+  font-size:1.25em
+}
