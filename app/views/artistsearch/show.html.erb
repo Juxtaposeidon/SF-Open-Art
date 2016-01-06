@@ -3,9 +3,9 @@
 <div id = "artistmap"></div>
 <div id = "artistresults">
   <h3>Works of <%=@name[1]%> <%=@name[0]%></h3>
-<%@works.each do |item|%>
-<p>
-  <%=link_to item.title, item.title, class: "artname", data: {latitude: item.latitude, longitude: item.longitude, address: item.address}%>
-</p>
-<%end%>
+  <%@works.each do |item|%>
+  <p>
+    <%=link_to item.title, item.title, class: "artname", data: {latitude: item.latitude, longitude: item.longitude, address: item.address}%>
+  </p>
+  <%end%>
 </div>
