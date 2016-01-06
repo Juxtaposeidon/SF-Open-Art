@@ -27,7 +27,7 @@ class NearbysearchController < ApplicationController
 
   def prevresults
     @@resultspage -= 10
-    @resulttrack = @@resultspage
+    @resultindex = @@resultspage + 1
     @showprev = @@resultspage > 0
     @shownext = @@resultspage < 90
     @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
