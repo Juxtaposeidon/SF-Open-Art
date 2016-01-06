@@ -1,6 +1,7 @@
 $(document).ready(function() {
-  var map
-  initMap();
+  var map = new google.maps.Map(document.getElementById('resultmap'), {
+      zoom: 13
+    });
   map.setCenter(new google.maps.LatLng(37.7833, -122.4167));
   var startlat = 0
   var startlong = 0
@@ -8,12 +9,6 @@ $(document).ready(function() {
     map: map,
   });
   var infowindow = new google.maps.InfoWindow();
-
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('resultmap'), {
-      zoom: 13
-    });
-  }
   function changeMarkerPosition(tag, lat, lng) {
   var latlng = new google.maps.LatLng(lat, lng);
   tag.setPosition(latlng);

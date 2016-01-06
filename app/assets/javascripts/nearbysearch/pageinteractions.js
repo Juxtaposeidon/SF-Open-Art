@@ -1,6 +1,7 @@
 $(document).ready(function() {
-  var map;
-  initMap();
+  var map = new google.maps.Map(document.getElementById('nearmap'), {
+      zoom: 16
+  });
   var startlat;
   var startlong;
   var directionsDisplay = new google.maps.DirectionsRenderer();
@@ -26,11 +27,6 @@ $(document).ready(function() {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
         }
-    });
-  }
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('nearmap'), {
-      zoom: 16
     });
   }
 
