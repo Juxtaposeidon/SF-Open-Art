@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var map = new google.maps.Map(document.getElementById('nearmap'), {
-      zoom: 16
+    zoom: 16
   });
   var startlat;
   var startlong;
@@ -18,24 +18,25 @@ $(document).ready(function() {
     var start = new google.maps.LatLng(startlat, startlong);
     directionsDisplay.setMap(map);
     var request = {
-        origin : start,
-        destination : end,
-        travelMode : google.maps.TravelMode.DRIVING
+      origin : start,
+      destination : end,
+      travelMode : google.maps.TravelMode.DRIVING
     };
     var directionsService = new google.maps.DirectionsService();
     directionsService.route(request, function(response, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
-            directionsDisplay.setDirections(response);
-        }
+      if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(response);
+      }
     });
   }
 
   navigator.geolocation.getCurrentPosition(function (position) {
-  startlat = position.coords.latitude
-  startlong = position.coords.longitude
-  initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  changeMarkerPosition(marker, position.coords.latitude, position.coords.longitude)
-  map.setCenter(initialLocation)});
+    startlat = position.coords.latitude
+    startlong = position.coords.longitude
+    initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    changeMarkerPosition(marker, position.coords.latitude, position.coords.longitude)
+    map.setCenter(initialLocation)
+  });
 
   $("#locationframe").on("click", ".address", function(event){
     event.preventDefault();

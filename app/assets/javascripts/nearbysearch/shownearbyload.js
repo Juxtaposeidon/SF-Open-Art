@@ -1,6 +1,6 @@
 $(document).ready(function() {
   navigator.geolocation.getCurrentPosition(function (position){
-  findNearEvent(position)
+    findNearEvent(position)
   });
   function findNearEvent(location){
     var position = {
@@ -8,9 +8,9 @@ $(document).ready(function() {
       "long" : location.coords.longitude
     }
     $.ajax({
-        data: position,
-        method: "GET",
-        url: 'nearbysearch/load'
+      data: position,
+      method: "GET",
+      url: 'nearbysearch/load'
     })
     .done(function(result){
       $('#content').html(result['partial'])

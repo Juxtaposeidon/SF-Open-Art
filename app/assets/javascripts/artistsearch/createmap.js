@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var map = new google.maps.Map(document.getElementById('artistmap'), {
-      zoom: 13
-    });
+    zoom: 13
+  });
   map.setCenter(new google.maps.LatLng(37.7833, -122.4167));
   var startlat = 0
   var startlong = 0
