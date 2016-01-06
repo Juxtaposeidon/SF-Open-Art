@@ -20,7 +20,6 @@ class NearbysearchController < ApplicationController
     @showprev = @@resultspage > 0
     @shownext = @@resultspage < 90
     @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
-    p @nearbyspots
     render :json => {
       :partial => render_to_string(:partial => 'nearbysearch/locations')
     }
@@ -32,7 +31,6 @@ class NearbysearchController < ApplicationController
     @showprev = @@resultspage > 0
     @shownext = @@resultspage < 90
     @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
-    p @nearbyspots
     render :json => {
       :partial => render_to_string(:partial => 'nearbysearch/locations')
     }
