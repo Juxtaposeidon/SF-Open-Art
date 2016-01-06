@@ -9,28 +9,28 @@
 </head>
 <body>
 <header>
-<%=link_to image_tag("artlogo.png", id: "logo"), root_path%>
-<div id="navbar">
-  <table id="menutable">
-  <tr id="menurow">
-    <td class="menuitem">
-      <%=link_to "Show Nearby Art", nearbysearch_path%>
-    </td>
-    <td class="menuitem">
-      <%=link_to "Search by Location", locationsearch_path%>
-    </td>
-    <td class="menuitem">
-      <%=link_to "Search by Artist", artistsearch_index_path%>
-    </td>
-    <td class="menuitem">
-      <%=link_to "About", about_path%>
-    </td>
-  </tr>
-</table>
-</div>
+  <%=link_to image_tag("artlogo.png", id: "logo"), root_path%>
+  <div id="navbar">
+    <table id="menutable">
+      <tr id="menurow">
+        <td class="menuitem">
+          <%=link_to "Show Nearby Art", nearbysearch_path%>
+        </td>
+        <td class="menuitem">
+          <%=link_to "Search by Location", locationsearch_path%>
+        </td>
+        <td class="menuitem">
+          <%=link_to "Search by Artist", artistsearch_index_path%>
+        </td>
+        <td class="menuitem">
+          <%=link_to "About", about_path%>
+        </td>
+      </tr>
+    </table>
+  </div>
 </header>
 <div id="main">
-<%= yield %>
+  <%= yield %>
 </div>
 </body>
 </html>
