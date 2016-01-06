@@ -3,7 +3,7 @@ class NearbysearchController < ApplicationController
   end
 
   def load
-    @resulttrack = 0
+    @resultindex = 1
     @@resultspage = 0
     @showprev = false
     @shownext = true
@@ -16,7 +16,7 @@ class NearbysearchController < ApplicationController
 
   def nextresults
     @@resultspage += 10
-    @resulttrack = @@resultspage
+    @resultindex = @@resultspage + 1
     @showprev = @@resultspage > 0
     @shownext = @@resultspage < 90
     @nearbyspots = @@allspots[@@resultspage..@@resultspage+9]
