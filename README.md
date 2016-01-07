@@ -1,4 +1,4 @@
-# PITBULL ROULETTE
+# SF Open Art
 
 This is a Rails app that makes it easy to find civic artwork displays in San Francisco. The app uses data from the SF OpenData project to build out maps that show art locations.
 
