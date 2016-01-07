@@ -46,7 +46,7 @@ header{
   font-size: 1.1em;
 }
 
-.menuitem a{
+.menuitem a, .menuitem a:visited, .menuitem a:link{
   text-decoration: none;
   color:white;
   padding: 25px;
@@ -65,4 +65,8 @@ header{
 
 body{
   font-family: verdana;
+}
+
+a:link, a:visited{
+  color: #0000cc;
 }
