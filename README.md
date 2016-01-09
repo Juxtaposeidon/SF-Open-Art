@@ -6,7 +6,7 @@ This is a Rails app that makes it easy to find civic artwork displays in San Fra
 
 # Demo
 
-An online demo is available at http://guarded-temple-5988.herokuapp.com/
+An online demo is available at http://sfopenart.herokuapp.com/
 
 # Features
 
