@@ -23,12 +23,11 @@ class LocationsController < ApplicationController
   end
 
   def search
-
   end
 
   def results
-    @result = Place.near(params["query"], 10, :order => "distance").limit(10)
-    @getresults = @result.length > 0
+    @results = Place.near(params["query"], 10, :order => "distance").limit(10)
+    @getresults = @results.length > 0
   end
 
 end
