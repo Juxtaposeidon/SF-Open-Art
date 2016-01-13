@@ -48,22 +48,15 @@ $(document).ready(function() {
     scroll(0,0)
   })
 
-  $("#locationframe").on("click", "#next", function(event){
+  $("#locationframe").on("click", ".results", function(event){
     event.preventDefault();
+    var direction = {
+      pagedir: $(this).text()
+    }
     $.ajax({
-      url: 'nearbysearch/nextresults',
+      url: 'nearbysearch/show',
       method: "GET",
-    })
-    .done(function(results){
-      $('#locationframe').html(results["partial"])
-    })
-  });
-
-  $("#locationframe").on("click", "#prev", function(event){
-    event.preventDefault();
-    $.ajax({
-      url: 'nearbysearch/prevresults',
-      method: "GET",
+      data: direction
     })
     .done(function(results){
       $('#locationframe').html(results["partial"])
