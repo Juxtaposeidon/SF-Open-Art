@@ -54,7 +54,7 @@ $(document).ready(function() {
       pagedir: $(this).text()
     }
     $.ajax({
-      url: 'nearbysearch/show',
+      url: '$(this).attr('href')',
       method: "GET",
       data: direction
     })
