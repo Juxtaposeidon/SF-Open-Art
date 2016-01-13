@@ -1,0 +1,7 @@
+<%= form_tag("/locationsearch/search", method: "get") do %>
+  <%= label_tag("Please enter a search for an address or location (ie: Pier 39; 100 Market Street, San Francisco; Golden Gate Park)") %>
+  <br>
+  <br>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>

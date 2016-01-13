@@ -1,4 +1,4 @@
-class ArtistsearchController < ApplicationController
+class ArtistController < ApplicationController
   def index
     @artists = Place.select(:artist).map(&:artist).uniq.sort_by(&:downcase)
     @artistcount = @artists.length/3

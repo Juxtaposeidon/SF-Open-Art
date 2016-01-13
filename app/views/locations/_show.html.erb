@@ -9,9 +9,9 @@
   </p>
   <%end%>
   <%if @showprev %>
-    <%=link_to "previous", nearbysearch_path(@resultindex - 10), class: "results"%>
+    <%=link_to "previous", location_path(@resultindex - 10), class: "results"%>
   <%end%>
   <%if @shownext %>
-    <%=link_to "next", nearbysearch_path(@resultindex + 10), class: "results"%>
+    <%=link_to "next", location_path(@resultindex + 10), class: "results"%>
   <%end%>
 </div>

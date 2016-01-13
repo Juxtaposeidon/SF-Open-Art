@@ -1,4 +1,4 @@
-class NearbysearchController < ApplicationController
+class LocationsController < ApplicationController
   def index
     if request.xhr?
       @resultindex = 1
@@ -7,7 +7,7 @@ class NearbysearchController < ApplicationController
       @@allspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
       @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultindex-1..@resultindex+8]
       render :json => {
-        :partial => render_to_string(:partial => 'nearbysearch/map')
+        :partial => render_to_string(:partial => 'locations/map')
       }
     end
   end
@@ -18,8 +18,15 @@ class NearbysearchController < ApplicationController
     @shownext = @resultindex < 90
     @nearbyspots = @@allspots[@resultindex - 1..@resultindex + 8]
     render :json => {
-      :partial => render_to_string(:partial => 'nearbysearch/locations')
+      :partial => render_to_string(:partial => 'locations/show')
     }
+  end
+
+  def search
+    if xhr.request?
+    @result = Place.near(params["query"], 10, :order => "distance").limit(10)
+    @getresults = @result.length > 0
+    end
   end
 
 end
