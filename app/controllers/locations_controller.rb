@@ -23,10 +23,12 @@ class LocationsController < ApplicationController
   end
 
   def search
-    if xhr.request?
+
+  end
+
+  def results
     @result = Place.near(params["query"], 10, :order => "distance").limit(10)
     @getresults = @result.length > 0
-    end
   end
 
 end
