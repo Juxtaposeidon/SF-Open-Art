@@ -1,17 +1,16 @@
 class NearbysearchController < ApplicationController
   def index
-  end
-
-  def load
-    @resultindex = 1
-    @@resultspage = 0
-    @showprev = false
-    @shownext = true
-    @@allspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
-    @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@@resultspage..@@resultspage+9]
-    render :json => {
-      :partial => render_to_string(:partial => 'nearbysearch/map')
-    }
+    if request.xhr?
+      @resultindex = 1
+      @@resultspage = 0
+      @showprev = false
+      @shownext = true
+      @@allspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
+      @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@@resultspage..@@resultspage+9]
+      render :json => {
+        :partial => render_to_string(:partial => 'nearbysearch/map')
+      }
+    end
   end
 
   def nextresults

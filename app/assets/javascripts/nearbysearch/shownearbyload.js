@@ -10,7 +10,7 @@ $(document).ready(function() {
     $.ajax({
       data: position,
       method: "GET",
-      url: 'nearbysearch/load'
+      url: 'nearbysearch'
     })
     .done(function(result){
       $('#content').html(result['partial'])
