@@ -1,6 +1,21 @@
-// Place all the styles related to the shownearby controller here.
+// Place all the styles related to the farsearch controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#resultmap{
+  margin: auto;
+  width: 60%;
+  height: 500px;
+  border: black solid 1px;
+  float: left;
+}
+
+#results{
+  width:35%;
+  margin-top:15px;
+  text-align: center;
+  float:right;
+}
+
 #locations{
   width: 50%;
   float:right;
