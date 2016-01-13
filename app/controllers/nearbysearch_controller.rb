@@ -13,7 +13,6 @@ class NearbysearchController < ApplicationController
   end
 
   def show
-    p params
     @resultindex = params[:id].to_i
     @showprev = @resultindex > 1
     @shownext = @resultindex < 90
