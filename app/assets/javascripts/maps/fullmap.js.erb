@@ -1,0 +1,27 @@
+$(document).ready(function() {
+  var map = new google.maps.Map(document.getElementById('fullmap'), {
+    zoom: 13
+  });
+  map.setCenter(new google.maps.LatLng(37.7833, -122.4167));
+  var marker = new google.maps.Marker({
+    map: map,
+  });
+  var infowindow = new google.maps.InfoWindow();
+  placeMarker = function(location, info){
+    var marker = new google.maps.Marker({
+    map: map,
+    position: location
+    });
+  }
+
+  placeAllMarkers= function(){
+    $.ajax({
+      url: '/markers'
+    })
+    .done(function(data){
+      console.log(data)
+    })
+  }
+
+  placeAllMarkers();
+})
