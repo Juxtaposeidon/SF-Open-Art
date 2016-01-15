@@ -7,11 +7,22 @@ $(document).ready(function() {
     map: map,
   });
   var infowindow = new google.maps.InfoWindow();
-  placeMarker = function(location){
+  placeMarker = function(location, id){
     var marker = new google.maps.Marker({
     map: map,
-    position: location
+    position: location,
+    customInfo: id
     });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      $.ajax({
+        type: 'GET',
+        url: '/info_window',
+        data: {
+          'markerid': marker.customInfo
+        }
+      })
+    })
   }
 
   placeAllMarkers= function(){
@@ -20,11 +31,13 @@ $(document).ready(function() {
     })
     .done(function(data){
       for(var place in data){
-      var point = new google.maps.LatLng(data[place].latitude, data[place].longitude);
-      placeMarker(point)
+        var point = new google.maps.LatLng(data[place].latitude, data[place].longitude);
+        placeMarker(point, data[place].id)
       }
     })
   }
 
   placeAllMarkers();
+
+
 })
