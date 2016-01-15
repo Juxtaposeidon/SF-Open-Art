@@ -2,7 +2,7 @@ class MarkersController < ApplicationController
 
   def index
     if request.xhr?
-      render(json: {locations: Place.all})
+      render(json:  Place.all)
     end
 
   end
