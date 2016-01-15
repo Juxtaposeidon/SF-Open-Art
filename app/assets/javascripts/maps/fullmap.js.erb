@@ -14,13 +14,16 @@ $(document).ready(function() {
     customInfo: id
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function(){
       $.ajax({
         type: 'GET',
-        url: '/info_window',
+        url: '/markers/show',
         data: {
-          'markerid': marker.customInfo
+          markerid: marker.customInfo
         }
+      })
+      .done(function(data){
+        $('#fullmapdesc').html('<h5><i>' + data.title + '</i> by ' + data.artist + '<br>Address: ' + data.address + '</h5>')
       })
     })
   }
