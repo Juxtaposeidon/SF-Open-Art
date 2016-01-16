@@ -8,6 +8,7 @@ Rails.application.config.assets.precompile += %w( about/slider.js )
 Rails.application.config.assets.precompile += %w( about/pageinteractions.js )
 Rails.application.config.assets.precompile += %w( locations/updatemap.js )
 Rails.application.config.assets.precompile += %w( artists/createmap.js )
+Rails.application.config.assets.precompile += %w( maps/fullmap.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
