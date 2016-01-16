@@ -9,10 +9,13 @@
 </head>
 <body>
 <header>
-  <%=link_to image_tag("artlogo.png", id: "logo"), root_path%>
   <div id="navbar">
     <table id="menutable">
       <tr id="menurow">
+        <td id ="logotd">
+            <%=link_to image_tag("artlogo.png", id: "logo"), root_path%>
+
+        </td>
         <td class="menuitem">
           <%=link_to "Show Nearby Art", locations_path%>
         </td>
