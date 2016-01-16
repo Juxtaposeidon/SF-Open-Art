@@ -4,10 +4,7 @@ $(document).ready(function() {
     zoom: 13
   });
   map.setCenter(new google.maps.LatLng(37.7833, -122.4167));
-  var marker = new google.maps.Marker({
-    map: map,
-  });
-  var infowindow = new google.maps.InfoWindow();
+
   placeMarker = function(location, id){
     var marker = new google.maps.Marker({
       map: map,
@@ -15,7 +12,6 @@ $(document).ready(function() {
       customInfo: id,
       icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
-
     google.maps.event.addListener(marker, 'click', function(){
       $.ajax({
         type: 'GET',

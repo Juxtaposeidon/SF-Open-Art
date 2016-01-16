@@ -60,7 +60,7 @@ header{
 }
 
 .menuitem a:hover{
-  outline: 1px solid white;
+  outline: 2px solid white;
 }
 
 #menutable{
