@@ -43,8 +43,9 @@ header{
 
 #navbar{
   position:fixed;
-  top:50px;
+  top:20px;
   right: 0px;
+  height:50px;
 }
 
 .menuitem{
