@@ -18,7 +18,7 @@ class LocationsController < ApplicationController
     @shownext = @resultindex < 90
     @nearbyspots = @@allspots[@resultindex - 1..@resultindex + 8]
     render :json => {
-      :partial => render_to_string(:partial => 'locations/show')
+      :partial => render_to_string(:partial => 'locations/show', :locals => {resultindex: @resultindex, showprev: @showprev, shownext: @shownext, nearbyspots: @nearbyspots})
     }
   end
 

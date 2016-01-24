@@ -1,17 +1,17 @@
 <div id = "locations">
-  <% @nearbyspots.each_with_index do |place, index| %>
+  <% nearbyspots.each_with_index do |place, index| %>
   <p class = "nearbylocation">
-    <%= @resultindex + index %>. Piece Title: <%= place.title%>
+    <%= resultindex + index %>. Piece Title: <%= place.title%>
     <br>
     Artist: <%= place.artist%> (<%=link_to "Search", artist_path(place.artist) %>)
     <br>
     <%=link_to place.address, location_path(place.title), data: {lat: place.latitude, long: place.longitude}, class: "address" %>
   </p>
   <%end%>
-  <%if @showprev %>
-    <%=link_to "previous", location_path(@resultindex - 10), class: "results"%>
+  <%if showprev %>
+    <%=link_to "previous", location_path(resultindex - 10), class: "results"%>
   <%end%>
-  <%if @shownext %>
-    <%=link_to "next", location_path(@resultindex + 10), class: "results"%>
+  <%if shownext %>
+    <%=link_to "next", location_path(resultindex + 10), class: "results"%>
   <%end%>
 </div>
