@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'locations/pageinteractions.js'%>
 <div id = "nearmap"></div>
 <div id = "locationframe">
-  <%=render partial: "show"%>
+  <%=render partial: "show", locals: {nearbyspots: @nearbyspots, showprev: @showprev, shownext: @shownext, resultindex: @resultindex}%>
 </div>
 <div id = "mapdesc">'A' represents your current location, and 'B' represents your requested destination. </div>
