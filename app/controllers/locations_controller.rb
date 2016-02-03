@@ -4,8 +4,8 @@ class LocationsController < ApplicationController
       @resultindex = 1
       @showprev = false
       @shownext = true
-      @@allspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
-      @nearbyspots = Place.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultindex-1..@resultindex+8]
+      @@allspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
+      @nearbyspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultindex-1..@resultindex+8]
       render :json => {
         :partial => render_to_string(:partial => 'locations/map')
       }
@@ -26,7 +26,7 @@ class LocationsController < ApplicationController
   end
 
   def results
-    @results = Place.near(params["query"] + " san francisco", 10, :order => "distance").limit(10)
+    @results = Location.near(params["query"] + " san francisco", 10, :order => "distance").limit(10)
     @getresults = @results.length > 0
   end
 
