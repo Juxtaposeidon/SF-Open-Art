@@ -23,6 +23,7 @@ class LocationsController < ApplicationController
   end
 
   def search
+    @locations = Location.all
   end
 
   def results
