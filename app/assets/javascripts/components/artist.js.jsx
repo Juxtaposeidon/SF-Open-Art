@@ -1,6 +1,6 @@
 var Artist = React.createClass({
   propTypes: {
-    name: React.PropTypes.string
+    data: React.PropTypes.string
   },
 
   render: function() {
