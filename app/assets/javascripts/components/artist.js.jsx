@@ -1,11 +1,13 @@
 var Artist = React.createClass({
-  propTypes: {
-    data: React.PropTypes.string
+  getInitialState: function(){
+    return{
+      link: "artists/" + this.props.name,
+      name: this.props.name
+    }
   },
-
   render: function() {
     return (
-        <a href={this.props.link}>{this.props.data}</a>
+        <p><a href={this.state.link}>{this.state.name}</a></p>
     );
   }
 });
