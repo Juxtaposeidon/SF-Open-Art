@@ -1,14 +1,10 @@
 var ResultList = React.createClass({
   getInitialState: function(){
     return{
-      loading: <div id = "content">Now loading... please make sure you are sharing your current location</div>,
-      nearbyspots: []
-
+      nearbyspots: undefined
     }
   },
-
   componentDidMount: function() {
-    console.log(this)
     var react = this
     navigator.geolocation.getCurrentPosition(function (position){
       this.serverRequest = $.ajax({
@@ -19,19 +15,22 @@ var ResultList = React.createClass({
 
           }.bind(react)
       })
-    // this.serverRequest = $.ajax(this.props.source, function (result) {
-    //   var lastGist = result[0];
-    //   this.setState({
-    //     username: lastGist.owner.login,
-    //     lastGistUrl: lastGist.html_url
-    //   });
-    // }.bind(this));
-  })
+    })
   },
-
   render: function(){
+    if ( !this.state.nearbyspots ) {
+      return <div>Please wait..</div>
+    }
+    var places = this.state.nearbyspots
+    var locations = places.map(function(place){
+      console.log(place.title)
+      return <Result name={place.title}/>
+    });
     return(
-        this.state.loading
-      )
+      <table><tbody><tr><td>
+      {locations}
+            </td></tr></tbody></table>
+
+    )
   }
 })
