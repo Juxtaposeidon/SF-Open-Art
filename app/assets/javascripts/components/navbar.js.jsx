@@ -8,7 +8,6 @@ var Navbar = React.createClass({
   },
   render: function(){
     var tabs = this.state.links
-    console.log(this.state.logo)
     linktext = tabs.map(function(tab){
       key = tabs.indexOf(tab)
       return <NavTab link={tab.link}
