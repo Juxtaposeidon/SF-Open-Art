@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
       @@allspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
       @nearbyspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultindex-1..@resultindex+8]
       render :json => {
-        :partial => render_to_string(:partial => 'locations/map')
+        :nearbyspots => @nearbyspots, :prev =>@showprev, :next => @shownext
       }
     end
   end
