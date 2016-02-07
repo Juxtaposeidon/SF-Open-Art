@@ -10,7 +10,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE-897CDl9CnFtZDVIQEQkd409ibKqcmQ" type="text/javascript"></script>
 </head>
 <body>
-<%= react_component('Navbar', { tabs: [{text: "Show Nearby Art", link: locations_path}, {text: "Search by Location", link: locations_search_path}, {text: "Search by Artist", link: artists_path}, {text: "Show Full Map", link: maps_path}], logolink: root_path, image: image_path("artlogo.png") }) %>
+<%= react_component('Navbar', { tabs: [{text: "Show Nearby Art", link: locations_path}, {text: "Search by Location", link: locations_search_path}, {text: "Search by Artist", link: artists_path}, {text: "Show Full Map", link: maps_path}, {text: "About", link: about_path}], logolink: root_path, image: image_path("artlogo.png") }) %>
 
 <div id="main">
   <%= yield %>
