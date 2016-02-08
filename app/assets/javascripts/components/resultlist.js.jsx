@@ -1,7 +1,10 @@
 var ResultList = React.createClass({
   getInitialState: function(){
     return{
-      nearbyspots: undefined
+      nearbyspots: undefined,
+      showprev: undefined,
+      shownext: undefined,
+      index: 1
     }
   },
   componentDidMount: function() {
@@ -11,9 +14,8 @@ var ResultList = React.createClass({
         data: {'lat': position.coords.latitude, 'long': position.coords.longitude},
           url: '/locations',
           success: function(searchresults){
-            this.setState({nearbyspots: searchresults["nearbyspots"]})
-
-          }.bind(react)
+            this.setState({nearbyspots: searchresults["nearbyspots"], showprev: searchresults["prev"], shownext: searchresults["next"], })
+        }.bind(react)
       })
     })
   },
@@ -24,13 +26,16 @@ var ResultList = React.createClass({
     var places = this.state.nearbyspots
     var locations = places.map(function(place){
       console.log(place.title)
-      return <Result name={place.title}/>
+      return <Result name={place.title}
+      artist={place.artist}
+      address={place.address}
+      latitude={place.latitude}
+      longitude={place.longitude}/>
     });
     return(
-      <table><tbody><tr><td>
+      <div id="locations">
       {locations}
-            </td></tr></tbody></table>
-
+      </div>
     )
   }
 })
