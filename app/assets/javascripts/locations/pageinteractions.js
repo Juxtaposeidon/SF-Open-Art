@@ -50,17 +50,17 @@ $(document).ready(function() {
 
   $("#locationframe").on("click", ".results", function(event){
     event.preventDefault();
-    directionsDisplay.set('directions', null)
-    var direction = {
-      pagedir: $(this).text()
-    }
-    $.ajax({
-      url: $(this).attr('href'),
-      method: "GET",
-    })
-    .done(function(results){
-      $('#locationframe').html(results["partial"])
-    })
+    // directionsDisplay.set('directions', null)
+    // var direction = {
+    //   pagedir: $(this).text()
+    // }
+    // $.ajax({
+    //   url: $(this).attr('href'),
+    //   method: "GET",
+    // })
+    // .done(function(results){
+    //   $('#locationframe').html(results["partial"])
+    // })
   });
 
 });

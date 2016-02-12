@@ -2,9 +2,10 @@ var ResultList = React.createClass({
   getInitialState: function(){
     return{
       nearbyspots: undefined,
+      renderspots:undefined,
       showprev: undefined,
       shownext: undefined,
-      index: 1
+      index: 0
     }
   },
   componentDidMount: function() {
@@ -14,26 +15,35 @@ var ResultList = React.createClass({
         data: {'lat': position.coords.latitude, 'long': position.coords.longitude},
           url: '/locations',
           success: function(searchresults){
-            this.setState({nearbyspots: searchresults["nearbyspots"], showprev: searchresults["prev"], shownext: searchresults["next"], })
+            this.setState({nearbyspots: searchresults["nearbyspots"], showprev: searchresults["prev"], shownext: searchresults["next"], renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)})
         }.bind(react)
       })
     })
+  },
+  getResults: function(direction){
+    if (direction == "Previous"){
+      this.state.index -= 10
+    }
+    else{
+       this.state.index += 10
+    }
+    this.setState({renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index+9)})
+  },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return nextState.renderspots !== this.state.renderspots;
   },
   render: function(){
     if ( !this.state.nearbyspots ) {
       return <div>Please wait..</div>
     }
-    var next = undefined
-    var prev = undefined
-    if (this.state.shownext){
-      next = <a href="">Next</a>
+    if (this.state.index < 90){
+      var next = <a href="" className="results" onClick={this.getResults.bind(this, "Next")}>Next</a>
     }
-    if (this.state.showprev){
-      Prev = <a href="">Prev</a>
+    if (this.state.index > 0){
+      var prev = <a href="" className="results" onClick={this.getResults.bind(this, "Previous")}>Previous</a>
     }
-    var places = this.state.nearbyspots
+    var places = this.state.renderspots
     var locations = places.map(function(place){
-      console.log(place.title)
       return <Result name={place.title}
       artist={place.artist}
       address={place.address}
@@ -43,7 +53,7 @@ var ResultList = React.createClass({
     return(
       <div id="locations">
       {locations}
-      {prev}{next}
+      {prev} {next}
       </div>
     )
   }

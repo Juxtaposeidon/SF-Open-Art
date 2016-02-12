@@ -4,8 +4,9 @@ class LocationsController < ApplicationController
       @resultindex = 1
       @showprev = false
       @shownext = true
-      @@allspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
-      @nearbyspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultindex-1..@resultindex+8]
+      @nearbyspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)
+      # p @@allspots
+      # @nearbyspots = Location.near([params['lat'], params['long']], 10, :order => "distance").limit(100)[@resultindex-1..@resultindex+8]
       render :json => {
         :nearbyspots => @nearbyspots, :prev =>@showprev, :next => @shownext
       }
@@ -13,13 +14,13 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @resultindex = params[:id].to_i
+    p params
+    @resultindex = params[:indexno].to_i
     @showprev = @resultindex > 1
     @shownext = @resultindex < 90
     @nearbyspots = @@allspots[@resultindex - 1..@resultindex + 8]
-    render :json => {
-      :partial => render_to_string(:partial => 'locations/show', :locals => {resultindex: @resultindex, showprev: @showprev, shownext: @shownext, nearbyspots: @nearbyspots})
-    }
+    p @@allspots
+    render :json => {resultindex: @resultindex, showprev: @showprev, shownext: @shownext, nearbyspots: @nearbyspots}
   end
 
   def search
