@@ -10,7 +10,7 @@ var ResultList = React.createClass({
   componentDidMount: function() {
     var react = this
     navigator.geolocation.getCurrentPosition(function (position){
-      this.serverRequest = $.ajax({
+    $.ajax({
         data: {'lat': position.coords.latitude, 'long': position.coords.longitude},
           url: '/locations',
           success: function(searchresults){
@@ -22,6 +22,14 @@ var ResultList = React.createClass({
   render: function(){
     if ( !this.state.nearbyspots ) {
       return <div>Please wait..</div>
+    }
+    var next = undefined
+    var prev = undefined
+    if (this.state.shownext){
+      next = <a href="">Next</a>
+    }
+    if (this.state.showprev){
+      Prev = <a href="">Prev</a>
     }
     var places = this.state.nearbyspots
     var locations = places.map(function(place){
@@ -35,6 +43,7 @@ var ResultList = React.createClass({
     return(
       <div id="locations">
       {locations}
+      {prev}{next}
       </div>
     )
   }
