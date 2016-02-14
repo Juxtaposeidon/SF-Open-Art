@@ -27,7 +27,7 @@ var Result = React.createClass({
       <br></br>
       Artist: {this.state.artist} (<a href={this.state.link}>Search</a>)
       <br></br>
-      <a data-lat={this.state.latitude} data-long={this.state.longitude} className="address"><span className="noclick">{this.state.address}</span></a>
+      <a data-lat={this.state.latitude} data-long={this.state.longitude} className="address noclick">{this.state.address}</a>
       </p>
     )
   }
