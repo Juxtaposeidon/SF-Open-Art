@@ -9,10 +9,10 @@ var Navbar = React.createClass({
   render: function(){
     var tabs = this.state.links
     linktext = tabs.map(function(tab){
-      key = tabs.indexOf(tab)
+      tabindex = tabs.indexOf(tab)
       return <NavTab link={tab.link}
-      text={tab.text}
-      tabkey={key}/>
+      key={tabindex}
+      text={tab.text}/>
     })
     return(
         <header>

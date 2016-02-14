@@ -22,7 +22,7 @@ var Result = React.createClass({
 
   render: function(){
     return(
-      <p class = "nearbylocation">
+      <p className = "nearbylocation">
        Piece Title: {this.state.name}
       <br></br>
       Artist: {this.state.artist} (<a href={this.state.link}>Search</a>)
