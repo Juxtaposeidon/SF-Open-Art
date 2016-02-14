@@ -48,7 +48,8 @@ var ResultList = React.createClass({
       artist={place.artist}
       address={place.address}
       latitude={place.latitude}
-      longitude={place.longitude}/>
+      longitude={place.longitude}
+      key={place.id}/>
     });
     return(
       <div id="locations">

@@ -19,10 +19,7 @@ var Result = React.createClass({
       longitude: this.props.longitude
     }
   },
-    shouldComponentUpdate: function(nextProps, nextState) {
-    return nextState.name !== this.state.name;
-    console.log("trig")
-  },
+
   render: function(){
     return(
       <p class = "nearbylocation">
