@@ -11,11 +11,11 @@ var ResultList = React.createClass({
   componentDidMount: function() {
     var react = this
     navigator.geolocation.getCurrentPosition(function (position){
-    $.ajax({
-        data: {'lat': position.coords.latitude, 'long': position.coords.longitude},
-          url: '/locations',
-          success: function(searchresults){
-            this.setState({nearbyspots: searchresults["nearbyspots"], showprev: searchresults["prev"], shownext: searchresults["next"], renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)})
+      $.ajax({
+        data:{'lat': position.coords.latitude, 'long': position.coords.longitude},
+        url: '/locations',
+        success: function(searchresults){
+          this.setState({nearbyspots: searchresults["nearbyspots"], showprev: searchresults["prev"], shownext: searchresults["next"], renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)})
         }.bind(react)
       })
     })
@@ -37,10 +37,10 @@ var ResultList = React.createClass({
       return <div>Please wait..</div>
     }
     if (this.state.index < 90){
-      var next = <a href="" className="results" onClick={this.getResults.bind(this, "Next")}>Next</a>
+      var next = <a className="noclick" onClick={this.getResults.bind(this, "Next")}>Next</a>
     }
     if (this.state.index > 0){
-      var prev = <a href="" className="results" onClick={this.getResults.bind(this, "Previous")}>Previous</a>
+      var prev = <a className="noclick" onClick={this.getResults.bind(this, "Previous")}>Previous</a>
     }
     var places = this.state.renderspots
     var locations = places.map(function(place){
