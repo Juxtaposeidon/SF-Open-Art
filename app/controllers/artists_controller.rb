@@ -10,7 +10,7 @@ class ArtistsController < ApplicationController
   def show
     @artist = params[:id]
     @works = Location.where(artist:@artist)
-    @name = @artist.split(",")
+    @name = @artist.split(",").reverse.join(" ")
   end
 
 end

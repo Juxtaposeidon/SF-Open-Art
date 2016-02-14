@@ -1,4 +1,10 @@
 var Artist = React.createClass({
+  getDefaultProps: function(){
+    return{
+    name: "",
+    link: ""
+    }
+  },
   getInitialState: function(){
     return{
       link: "artists/" + this.props.name,
