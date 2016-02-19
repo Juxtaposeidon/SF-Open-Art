@@ -1,4 +1,4 @@
-class Place < ActiveRecord::Base
+class Location < ActiveRecord::Base
 
 reverse_geocoded_by :latitude, :longitude,
   :address => :address

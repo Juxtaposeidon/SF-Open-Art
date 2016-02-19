@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20151226211024) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "places", force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "artist"
     t.float  "latitude"
     t.float  "longitude"

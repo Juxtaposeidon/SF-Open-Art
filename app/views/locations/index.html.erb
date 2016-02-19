@@ -1,2 +1,6 @@
-<%= javascript_include_tag 'locations/loadpage.js'%>
-<div id = "content">Now loading... please make sure you are sharing your current location</div>
+<%= javascript_include_tag 'locations/pageinteractions.js'%>
+<div id = "nearmap"></div>
+<div id = "locationframe">
+<%=react_component("ResultList")%>
+</div>
+<div id = "mapdesc">'A' represents your current location, and 'B' represents your requested destination. </div>

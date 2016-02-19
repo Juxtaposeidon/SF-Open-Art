@@ -39,6 +39,7 @@ $(document).ready(function() {
   });
 
   $("#locationframe").on("click", ".address", function(event){
+    event.preventDefault();
     $('p').removeClass("selected")
     $(this).parent().addClass("selected")
     marker.setMap(null)
@@ -46,5 +47,20 @@ $(document).ready(function() {
     displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));
     scroll(0,0)
   })
+
+  $("#locationframe").on("click", ".results", function(event){
+    event.preventDefault();
+    directionsDisplay.set('directions', null)
+    var direction = {
+      pagedir: $(this).text()
+    }
+    $.ajax({
+      url: $(this).attr('href'),
+      method: "GET",
+    })
+    .done(function(results){
+      $('#locationframe').html(results["partial"])
+    })
+  });
 
 });

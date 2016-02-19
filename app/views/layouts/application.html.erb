@@ -4,37 +4,14 @@
   <title>SF Open Art</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE-897CDl9CnFtZDVIQEQkd409ibKqcmQ" type="text/javascript"></script>
 </head>
 <body>
-<header>
-  <div id="navbar">
-    <table id="menutable">
-      <tr id="menurow">
-        <td id ="logotd">
-            <%=link_to image_tag("artlogo.png", id: "logo"), root_path%>
+<%= react_component('Navbar', { tabs: [{text: "Show Nearby Art", link: locations_path}, {text: "Search by Location", link: locations_search_path}, {text: "Search by Artist", link: artists_path}, {text: "Show Full Map", link: maps_path}, {text: "About", link: about_path}], logolink: root_path, image: image_path("artlogo.png") }) %>
 
-        </td>
-        <td class="menuitem">
-          <%=link_to "Show Nearby Art", locations_path%>
-        </td>
-        <td class="menuitem">
-          <%=link_to "Search by Location", locations_search_path%>
-        </td>
-        <td class="menuitem">
-          <%=link_to "Search by Artist", artists_path%>
-        </td>
-        <td class="menuitem">
-          <%=link_to "Show Full Map", maps_path%>
-        </td>
-        <td class="menuitem">
-          <%=link_to "About", about_path%>
-        </td>
-      </tr>
-    </table>
-  </div>
-</header>
 <div id="main">
   <%= yield %>
 </div>
