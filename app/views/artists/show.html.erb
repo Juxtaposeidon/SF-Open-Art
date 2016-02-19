@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'artists/createmap.js'%>
 
 <div id = "artistmap"></div>
-
+<div id = "artistresults">
 <%= react_component('ArtistPage', { works: @works, artist: @name }) %>
+</div>

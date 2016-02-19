@@ -13,7 +13,8 @@ $(document).ready(function() {
     var latlng = new google.maps.LatLng(lat, lng);
     tag.setPosition(latlng);
   }
-  $('.artname').click(function(event){
+
+  $('#artistresults').on("click",".artname", function(event){
     map.setZoom(16)
     changeMarkerPosition(marker, $(this).data('latitude'), $(this).data('longitude'))
     map.setCenter(new google.maps.LatLng($(this).data('latitude'), $(this).data('longitude')));

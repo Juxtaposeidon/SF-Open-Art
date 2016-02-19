@@ -23,7 +23,7 @@ var ArtistPage = React.createClass({
     })
 
     return(
-      <div id = "artistresults">
+      <div>
       <h3>Works of {this.state.artist}</h3>
       {artistwork}
       </div>
