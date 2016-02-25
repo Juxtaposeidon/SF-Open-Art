@@ -9,6 +9,7 @@ $(document).ready(function() {
     map: map,
     label: "A"
   });
+  var infowindow = new google.maps.InfoWindow();
 
   function changeMarkerPosition(tag, lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
