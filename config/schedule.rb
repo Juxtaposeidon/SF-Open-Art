@@ -5,10 +5,12 @@
 
 # Example:
 
-set :output, "/path/to/my/cron_log.log"
+set :output, "./log.log"
 
-every :hour do
+every 2.minutes do
   rake 'update'
+  puts "This is a cron test"
+
 end
 #
 # every 4.days do
