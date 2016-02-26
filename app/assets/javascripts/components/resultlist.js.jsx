@@ -29,9 +29,6 @@ var ResultList = React.createClass({
     }
     this.setState({renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index+9)})
   },
-  shouldComponentUpdate: function(nextProps, nextState) {
-    return nextState.renderspots !== this.state.renderspots;
-  },
   render: function(){
     if ( !this.state.nearbyspots ) {
       return <div>Please wait..</div>

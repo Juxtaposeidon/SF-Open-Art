@@ -7,10 +7,6 @@ $(document).ready(function() {
   var directionsDisplay = new google.maps.DirectionsRenderer({
       suppressMarkers: true
   });
-  var homemarker = new google.maps.Marker({
-    map: map,
-    label: "A"
-  });
   var destmarker = new google.maps.Marker({
     map: map
   });
@@ -19,6 +15,7 @@ $(document).ready(function() {
   function changeMarkerPosition(tag, place) {
     tag.setPosition(place);
   }
+
   function displayRoute(end) {
     var start = new google.maps.LatLng(startlat, startlong);
     directionsDisplay.setMap(map);
@@ -27,7 +24,6 @@ $(document).ready(function() {
       destination : end,
       travelMode : google.maps.TravelMode.WALKING
     };
-
     changeMarkerPosition(destmarker, end)
     var directionsService = new google.maps.DirectionsService();
     directionsService.route(request, function(response, status) {
@@ -38,6 +34,10 @@ $(document).ready(function() {
   }
 
   navigator.geolocation.getCurrentPosition(function (position) {
+    var homemarker = new google.maps.Marker({
+      map: map,
+      label: "!"
+    });
     startlat = position.coords.latitude
     startlong = position.coords.longitude
     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -49,7 +49,7 @@ $(document).ready(function() {
     $('p').removeClass("selected")
     $(this).parent().addClass("selected")
     infowindow.open(map,destmarker)
-    infowindow.setContent($(this).data('name'))
+    infowindow.setContent('<i>' + $(this).data('name') + '</i>')
     directionsDisplay.set('directions', null)
     displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));
     scroll(0,0)
