@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: SFTourist_production
-  username: SFTourist
-  password: <%= ENV['SFTOURIST_DATABASE_PASSWORD'] %>
+  database: SFTourist_development
+  # username: SFTourist
+  # password: <%= ENV['SFTOURIST_DATABASE_PASSWORD'] %>

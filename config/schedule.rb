@@ -4,11 +4,11 @@
 # http://en.wikipedia.org/wiki/Cron
 
 # Example:
-
+# EDITOR=subl crontab -e to open crontab
 set :output, "./log.log"
 
-every 2.minutes do
-  rake 'update'
+every :day do
+  rake 'update', :environment=> 'default'
   puts "This is a cron test"
 
 end
