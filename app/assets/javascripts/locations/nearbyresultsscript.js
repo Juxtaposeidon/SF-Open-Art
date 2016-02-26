@@ -2,8 +2,7 @@ $(document).ready(function() {
   var map = new google.maps.Map(document.getElementById('nearmap'), {
     zoom: 16
   });
-  var startlat;
-  var startlong;
+  var initialLocation
   var directionsDisplay = new google.maps.DirectionsRenderer({
       suppressMarkers: true
   });
@@ -17,14 +16,13 @@ $(document).ready(function() {
   }
 
   function displayRoute(end) {
-    var start = new google.maps.LatLng(startlat, startlong);
     directionsDisplay.setMap(map);
     var request = {
-      origin : start,
+      origin : initialLocation,
       destination : end,
       travelMode : google.maps.TravelMode.WALKING
     };
-    changeMarkerPosition(destmarker, end)
+    destmarker.setPosition(end)
     var directionsService = new google.maps.DirectionsService();
     directionsService.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
@@ -32,18 +30,19 @@ $(document).ready(function() {
       }
     });
   }
-
+  function locationError(){
+    alert("Please share your location to enable this feature.")
+  }
   navigator.geolocation.getCurrentPosition(function (position) {
     var homemarker = new google.maps.Marker({
       map: map,
       label: "!"
     });
-    startlat = position.coords.latitude
-    startlong = position.coords.longitude
     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    changeMarkerPosition(homemarker, initialLocation)
+    homemarker.setPosition(initialLocation)
     map.setCenter(initialLocation)
-  });
+  },
+  locationError);
 
   $("#locationframe").on("click", ".address", function(event){
     $('p').removeClass("selected")

@@ -16,7 +16,6 @@ var Navbar = React.createClass({
     })
     return(
         <header>
-          <div id="navbar">
             <table id="menutable">
             <tbody>
               <tr id="menurow">
@@ -27,7 +26,6 @@ var Navbar = React.createClass({
               </tr>
               </tbody>
             </table>
-          </div>
         </header>
       )
   }
