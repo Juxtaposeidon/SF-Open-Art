@@ -4,16 +4,20 @@ $(document).ready(function() {
   });
   var startlat;
   var startlong;
-  var directionsDisplay = new google.maps.DirectionsRenderer();
-  var marker = new google.maps.Marker({
+  var directionsDisplay = new google.maps.DirectionsRenderer({
+      suppressMarkers: true
+  });
+  var homemarker = new google.maps.Marker({
     map: map,
     label: "A"
   });
+  var destmarker = new google.maps.Marker({
+    map: map
+  });
   var infowindow = new google.maps.InfoWindow();
 
-  function changeMarkerPosition(tag, lat, lng) {
-    var latlng = new google.maps.LatLng(lat, lng);
-    tag.setPosition(latlng);
+  function changeMarkerPosition(tag, place) {
+    tag.setPosition(place);
   }
   function displayRoute(end) {
     var start = new google.maps.LatLng(startlat, startlong);
@@ -23,6 +27,8 @@ $(document).ready(function() {
       destination : end,
       travelMode : google.maps.TravelMode.WALKING
     };
+
+    changeMarkerPosition(destmarker, end)
     var directionsService = new google.maps.DirectionsService();
     directionsService.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
@@ -35,14 +41,15 @@ $(document).ready(function() {
     startlat = position.coords.latitude
     startlong = position.coords.longitude
     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    changeMarkerPosition(marker, position.coords.latitude, position.coords.longitude)
+    changeMarkerPosition(homemarker, initialLocation)
     map.setCenter(initialLocation)
   });
 
   $("#locationframe").on("click", ".address", function(event){
     $('p').removeClass("selected")
     $(this).parent().addClass("selected")
-    marker.setMap(null)
+    infowindow.open(map,destmarker)
+    infowindow.setContent($(this).data('name'))
     directionsDisplay.set('directions', null)
     displayRoute(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));
     scroll(0,0)
