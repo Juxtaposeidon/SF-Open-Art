@@ -3,8 +3,6 @@ $(document).ready(function() {
     zoom: 13
   });
   map.setCenter(new google.maps.LatLng(37.7833, -122.4167));
-  var startlat = 0
-  var startlong = 0
   var marker = new google.maps.Marker({
     map: map
   });
