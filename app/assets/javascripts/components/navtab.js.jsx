@@ -7,9 +7,7 @@ var NavTab = React.createClass({
   },
   render: function(){
     return(
-
     <td className="menuitem"><a href={this.state.link}>{this.state.text}</a></td>
-
     )
   }
 })

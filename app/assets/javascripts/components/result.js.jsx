@@ -32,11 +32,3 @@ var Result = React.createClass({
     )
   }
 })
-
-// <p class = "nearbylocation">
-//     <%= resultindex + index %>. Piece Title: <%= place.title%>
-//     <br>
-//     Artist: <%= place.artist%> (<%=link_to "Search", artist_path(place.artist) %>)
-//     <br>
-//     <%=link_to place.address, location_path(place.title), data: {lat: place.latitude, long: place.longitude}, class: "address" %>
-//   </p>
