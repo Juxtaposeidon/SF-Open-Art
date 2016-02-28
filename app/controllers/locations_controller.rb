@@ -24,12 +24,11 @@ class LocationsController < ApplicationController
   end
 
   def search
-    @locations = Location.all
   end
 
   def results
     @results = Location.near(params["query"] + " san francisco", 10, :order => "distance").limit(10)
-    @getresults = @results.length > 0
+    @hasresults = @results.length > 0
   end
 
 end

@@ -11,8 +11,7 @@ $(document).ready(function() {
     var latlng = new google.maps.LatLng(lat, lng);
     tag.setPosition(latlng);
   }
-  $('.result').click(function(event){
-    event.preventDefault();
+  $('#results').on("click", ".result", function(event){
     changeMarkerPosition(marker, $(this).data('latitude'), $(this).data('longitude'))
     map.setCenter(new google.maps.LatLng($(this).data('latitude'), $(this).data('longitude')));
     infowindow.setContent("<i>"+ $(this).text() + "</i>: " + $(this).data('address'))
