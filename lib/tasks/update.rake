@@ -1,13 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'open-uri'
 require 'json'
 
+desc "I update the location db"
+task :update => :environment do
 source = JSON.load(open("https://data.sfgov.org/resource/zfw6-95su.json"))
 source.each do |item|
   pending = Location.find_by artist: item["artist"], title: item["title"]
@@ -26,3 +21,5 @@ Location.where.not(id: dupes).destroy_all
 Location.where(latitude: 37.7749295, longitude: -122.4194155).destroy_all
 Location.find_by(artist: "Beauchemin, Micheline", latitude: 37.615223, longitude: -122.389979).delete
 Location.find_by(artist: "artist").delete
+
+end

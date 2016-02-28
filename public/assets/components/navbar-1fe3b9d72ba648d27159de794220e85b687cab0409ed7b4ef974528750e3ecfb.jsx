@@ -16,7 +16,8 @@ var Navbar = React.createClass({
     })
     return(
         <header>
-          <table id="menutable">
+          <div id="navbar">
+            <table id="menutable">
             <tbody>
               <tr id="menurow">
                   <td id ="logotd">
@@ -24,23 +25,10 @@ var Navbar = React.createClass({
                     </td>
                 {linktext}
               </tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </header>
       )
-  }
-})
-
-var NavTab = React.createClass({
-  getInitialState: function(){
-    return {
-      link: this.props.link,
-      text: this.props.text,
-    }
-  },
-  render: function(){
-    return(
-    <td className="menuitem"><a href={this.state.link}>{this.state.text}</a></td>
-    )
   }
 })
