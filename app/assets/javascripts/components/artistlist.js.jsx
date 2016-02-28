@@ -1,4 +1,3 @@
-
 var ArtistList = React.createClass({
   getDefaultProps: function(){
     return{
@@ -46,8 +45,8 @@ var ArtistList = React.createClass({
 var Artist = React.createClass({
   getDefaultProps: function(){
     return{
-    name: "",
-    link: ""
+      name: "",
+      link: ""
     }
   },
   getInitialState: function(){
@@ -58,7 +57,7 @@ var Artist = React.createClass({
   },
   render: function() {
     return (
-        <p><a href={this.state.link}>{this.state.name}</a></p>
+      <p><a href={this.state.link}>{this.state.name}</a></p>
     );
   }
 });

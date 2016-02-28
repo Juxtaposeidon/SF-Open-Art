@@ -69,19 +69,3 @@ var LSResult = React.createClass({
     )
   }
 })
-
-
-// <%if @getresults%>
-//   <%@results.each do |result|%>
-//   <p>
-//     <%=link_to result.title, location_path(result.title), class: "result", data: {latitude: result.latitude, longitude: result.longitude, address: result.address} %>
-//     <br>
-//     <%=result.artist%> (<%=link_to 'search', artist_path(result.artist)%>)
-//   </p>
-//   <%end%>
-// <%else%>
-//   <p>
-//     Your search request returns no results. Please try entering another location.
-//   </p>
-// <%end%>
-// </div>
