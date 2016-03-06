@@ -1,10 +1,4 @@
 var LocationSearches = React.createClass({
-  getInitialProps: function(){
-    return{
-      results: []
-    }
-  },
-
   getInitialState: function(){
     return{
       results: this.props.results
@@ -20,12 +14,16 @@ var LocationSearches = React.createClass({
       )
     }
     var resultlist = (this.state.results).map(function(item){
-      return <LSResult title={item.title}
-      artist={item.artist}
-      address={item.address}
-      latitude={item.latitude}
-      longitude={item.longitude}
-      key={item.id}/>
+      return(
+        <LSResult
+          title={item.title}
+          artist={item.artist}
+          address={item.address}
+          latitude={item.latitude}
+          longitude={item.longitude}
+          key={item.id}
+        />
+      )
     })
     return(
         <div>{resultlist}</div>
@@ -35,18 +33,6 @@ var LocationSearches = React.createClass({
 })
 
 var LSResult = React.createClass({
-    getInitialProps: function(){
-    return{
-      title: undefined,
-      artist: undefined,
-      address: undefined,
-      longitude: undefined,
-      latitude: undefined,
-      artistlink: undefined,
-      key: undefined
-    }
-  },
-
   getInitialState: function(){
     return{
       title: this.props.title,
@@ -63,7 +49,7 @@ var LSResult = React.createClass({
     return(
       <p>
         <a className= "noclick result" data-latitude={this.state.latitude} data-longitude={this.state.longitude} data-address={this.state.address}>{this.props.title}</a>
-        <br></br>
+        <br/>
         Search by artist: <a href={this.state.artistlink}>{this.state.artist}</a>
       </p>
     )

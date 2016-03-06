@@ -9,14 +9,19 @@ var ResultList = React.createClass({
     }
   },
   componentDidMount: function() {
-    var react = this
+    var component = this
     navigator.geolocation.getCurrentPosition(function (position){
       $.ajax({
         data:{'lat': position.coords.latitude, 'long': position.coords.longitude},
         url: '/locations',
         success: function(searchresults){
-          this.setState({nearbyspots: searchresults["nearbyspots"], showprev: searchresults["prev"], shownext: searchresults["next"], renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)})
-        }.bind(react)
+          this.setState({
+            nearbyspots: searchresults["nearbyspots"],
+            showprev: searchresults["prev"],
+            shownext: searchresults["next"],
+            renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)
+          })
+        }.bind(component)
       })
     })
   },
@@ -27,7 +32,9 @@ var ResultList = React.createClass({
     else{
        this.state.index += 10
     }
-    this.setState({renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index+9)})
+    this.setState({
+      renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index+9)
+    })
   },
   render: function(){
     if ( !this.state.nearbyspots ) {
@@ -41,12 +48,16 @@ var ResultList = React.createClass({
     }
     var places = this.state.renderspots
     var locations = places.map(function(place){
-      return <Result name={place.title}
-      artist={place.artist}
-      address={place.address}
-      latitude={place.latitude}
-      longitude={place.longitude}
-      key={place.id}/>
+      return(
+        <Result
+          name={place.title}
+          artist={place.artist}
+          address={place.address}
+          latitude={place.latitude}
+          longitude={place.longitude}
+          key={place.id}
+        />
+      )
     });
     return(
       <div id="locations">
@@ -58,16 +69,6 @@ var ResultList = React.createClass({
 })
 
 var Result = React.createClass({
-  getInitialProps: function(){
-    return{
-      name: '',
-      link: '',
-      artist: '',
-      address:'',
-      latitude:'',
-      longitude:''
-    }
-  },
   getInitialState: function(){
     return{
       name: this.props.name,
@@ -83,9 +84,9 @@ var Result = React.createClass({
     return(
       <p className = "nearbylocation">
        Piece Title: {this.state.name}
-      <br></br>
+      <br/>
       Artist: {this.state.artist} (<a href={this.state.link}>Search</a>)
-      <br></br>
+      <br/>
       <a data-lat={this.state.latitude} data-long={this.state.longitude} data-name={this.state.name} className="address noclick">{this.state.address}</a>
       </p>
     )

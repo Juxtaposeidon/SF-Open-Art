@@ -1,14 +1,10 @@
 var ArtistList = React.createClass({
-  getDefaultProps: function(){
-    return{
-      artists: []
-    }
-  },
   getInitialState: function(){
     return{
       artists: this.props.artists
     }
   },
+
   render: function() {
     var allartists = this.state.artists
     var artistlength = allartists.length/3
@@ -43,18 +39,13 @@ var ArtistList = React.createClass({
 });
 
 var Artist = React.createClass({
-  getDefaultProps: function(){
-    return{
-      name: "",
-      link: ""
-    }
-  },
   getInitialState: function(){
     return{
       link: "artists/" + this.props.name,
       name: this.props.name
     }
   },
+
   render: function() {
     return (
       <p><a href={this.state.link}>{this.state.name}</a></p>
