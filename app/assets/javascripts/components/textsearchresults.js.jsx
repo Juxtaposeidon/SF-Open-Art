@@ -41,7 +41,6 @@ var LSResult = React.createClass({
       latitude: this.props.latitude,
       longitude: this.props.longitude,
       artistlink: "/artists/" + this.props.artist,
-      key: this.props.key
     }
   },
 

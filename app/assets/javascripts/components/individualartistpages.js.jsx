@@ -8,7 +8,7 @@ var ArtistPage = React.createClass({
 
   render: function(){
     var art = this.state.works
-    var artistwork = art.map(function(item){
+    var artistworks = art.map(function(item){
       index = art.indexOf(item)
       return (
         <ArtistWork
@@ -23,8 +23,8 @@ var ArtistPage = React.createClass({
 
     return(
       <div>
-        <h3>Works of {this.state.artist}</h3>
-        {artistwork}
+      <h3>Works of {this.state.artist}</h3>
+        {artistworks}
       </div>
     )
   }

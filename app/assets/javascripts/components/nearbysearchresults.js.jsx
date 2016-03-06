@@ -8,11 +8,15 @@ var ResultList = React.createClass({
       index: 0
     }
   },
+
   componentDidMount: function() {
     var component = this
     navigator.geolocation.getCurrentPosition(function (position){
       $.ajax({
-        data:{'lat': position.coords.latitude, 'long': position.coords.longitude},
+        data:{
+          'lat': position.coords.latitude,
+          'long': position.coords.longitude
+        },
         url: '/locations',
         success: function(searchresults){
           this.setState({
@@ -25,6 +29,7 @@ var ResultList = React.createClass({
       })
     })
   },
+
   getResults: function(direction){
     if (direction == "Previous"){
       this.state.index -= 10
@@ -36,15 +41,24 @@ var ResultList = React.createClass({
       renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index+9)
     })
   },
+
+  goBack: function(){
+    this.getResults("Previous")
+  },
+
+  goForward: function(){
+    this.getResults("Next")
+  },
+
   render: function(){
     if ( !this.state.nearbyspots ) {
       return <div>Please wait..</div>
     }
     if (this.state.index < 90){
-      var next = <a className="noclick" onClick={this.getResults.bind(this, "Next")}>Next</a>
+      var next = <a className="noclick" onClick={this.goForward}>Next</a>
     }
     if (this.state.index > 0){
-      var prev = <a className="noclick" onClick={this.getResults.bind(this, "Previous")}>Previous</a>
+      var prev = <a className="noclick" onClick={this.goBack}>Previous</a>
     }
     var places = this.state.renderspots
     var locations = places.map(function(place){

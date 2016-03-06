@@ -6,6 +6,7 @@ var Navbar = React.createClass({
       logo: this.props.image
     }
   },
+
   render: function(){
     var tabs = this.state.links
     var linktext = tabs.map(function(tab){
