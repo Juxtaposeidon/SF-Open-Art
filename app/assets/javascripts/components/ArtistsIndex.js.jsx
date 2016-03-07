@@ -1,21 +1,30 @@
 var ArtistList = React.createClass({
-  getInitialState: function(){
-    return{
-      artists: this.props.artists
-    }
-  },
-
   render: function() {
-    var allartists = this.state.artists
+    var allartists = this.props.artists
     var artistlength = allartists.length/3
     var artistList1 = allartists.slice(0, artistlength).map(function(person){
-        return <Artist name={person}/>
+    return(
+      <Artist
+        name={person}
+        link={"/artists/" + person}
+      />
+    )
     });
     var artistList2 = allartists.slice(artistlength,artistlength*2).map(function(person){
-      return <Artist name={person}/>
+        return(
+          <Artist
+            name={person}
+            link={"/artists/" + person}
+          />
+        )
     });
     var artistList3 = allartists.slice(artistlength*2,artistlength*3).map(function(person){
-      return <Artist name={person}/>
+        return(
+          <Artist
+            name={person}
+            link={"/artists/" + person}
+          />
+        )
     });
 
     return (
@@ -39,16 +48,9 @@ var ArtistList = React.createClass({
 });
 
 var Artist = React.createClass({
-  getInitialState: function(){
-    return{
-      link: "artists/" + this.props.name,
-      name: this.props.name
-    }
-  },
-
   render: function() {
     return (
-      <p><a href={this.state.link}>{this.state.name}</a></p>
+      <p><a href={this.props.link}>{this.props.name}</a></p>
     );
   }
 });
