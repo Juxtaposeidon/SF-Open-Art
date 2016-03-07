@@ -1,0 +1,215 @@
+/* line 4, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/about.scss */
+#slideshow {
+  float: right;
+  width: 50%;
+  height: auto;
+  padding: 5px;
+}
+
+/* line 11, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/about.scss */
+#abouttext {
+  width: 42%;
+  float: left;
+}
+/* line 4, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/artists.scss */
+#artistmap {
+  margin: auto;
+  width: 60%;
+  height: 500px;
+  border: black solid 1px;
+  float: left;
+}
+
+/* line 12, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/artists.scss */
+#artistresults {
+  width: 35%;
+  margin: auto;
+  text-align: center;
+  float: right;
+}
+
+/* line 19, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/artists.scss */
+#artisttable {
+  width: 100%;
+}
+/* line 4, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+#resultmap {
+  margin: auto;
+  width: 60%;
+  height: 500px;
+  border: black solid 1px;
+  float: left;
+}
+
+/* line 12, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+#results {
+  width: 35%;
+  margin-top: 15px;
+  text-align: center;
+  float: right;
+}
+
+/* line 19, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+#locations {
+  width: 50%;
+  float: right;
+  margin-left: 10px;
+}
+
+/* line 25, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+#mapdesc {
+  clear: left;
+  width: 45%;
+}
+
+/* line 30, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+#nearmap {
+  height: 500px;
+  width: 45%;
+  float: left;
+  z-index: 0;
+  margin-right: 10px;
+}
+
+/* line 38, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+p {
+  margin-top: 0px;
+}
+
+/* line 42, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+.selected {
+  outline: 1px solid black;
+}
+
+/* line 46, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/locations.scss */
+.nearbylocation {
+  padding: 5px;
+}
+/* line 5, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/maps.scss */
+#fullmap {
+  height: 500px;
+  width: 100%;
+}
+
+/* line 10, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/maps.scss */
+#fullmapdesc {
+  height: 100px;
+  width: 100%;
+  border: black solid 1px;
+  text-align: center;
+}
+/* line 4, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/welcome.scss */
+.wrapper {
+  margin-left: -8px;
+  margin-top: -25px;
+  bottom: 0;
+  background-image: url("fountainedit.jpg");
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+/* line 20, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/welcome.scss */
+#indexbox {
+  font-family: Palatino;
+  margin-top: 125px;
+  background-color: rgba(104, 104, 104, 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+/* line 30, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/welcome.scss */
+h1 {
+  font-size: 3em;
+}
+
+/* line 34, /Users/Juxtaposeidon/Desktop/SFTourist/SFTourist/app/assets/stylesheets/welcome.scss */
+h3 {
+  font-size: 1.25em;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+#logo{
+  height:80px;
+  width:auto;
+  margin-left: 5px;
+}
+
+#logotd{
+  text-align:left;
+  width:10%;
+}
+
+#main{
+  margin-top: 125px;
+}
+
+header{
+  width:100%;
+  height:100px;
+  background-color: black;
+  margin: 0px;
+  top: 0;
+  left: 0;
+  right:0;
+  position:fixed;
+  z-index: 1;
+  box-shadow: 10px 5px 5px #888888;
+}
+
+.menuitem{
+  color: white;
+  font-size: 1.1em;
+  width: 20%;
+  text-align: center;
+}
+
+.menuitem a, .menuitem a:visited, .menuitem a:link{
+  text-decoration: none;
+  color:white;
+  padding: 25px;
+}
+
+.menuitem a:hover{
+  outline: 2px solid white;
+}
+
+#menutable{
+  height: 50px;
+}
+
+body{
+  font-family: verdana;
+}
+
+a:link, a:visited{
+  color: #0000cc;
+}
+
+.noclick{
+  color: #0000cc;
+  text-decoration: underline;
+  cursor: pointer;
+}
