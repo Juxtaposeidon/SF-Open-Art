@@ -1,7 +1,6 @@
 class LocationsController < ApplicationController
 
   def index
-    p "tests"
   end
 
   def search

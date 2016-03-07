@@ -2,9 +2,7 @@ var ResultList = React.createClass({
   getInitialState: function(){
     return{
       nearbyspots: undefined,
-      renderspots:undefined,
-      showprev: undefined,
-      shownext: undefined,
+      renderspots: undefined,
       index: 0
     }
   },
@@ -21,8 +19,6 @@ var ResultList = React.createClass({
         success: function(searchresults){
           this.setState({
             nearbyspots: searchresults["nearbyspots"],
-            showprev: searchresults["prev"],
-            shownext: searchresults["next"],
             renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)
           })
         }.bind(component)
