@@ -1,9 +1,7 @@
-var ResultList = React.createClass({
+var ResultListContainer = React.createClass({
   getInitialState: function(){
     return{
-      nearbyspots: undefined,
-      renderspots: undefined,
-      index: 0
+      nearbyspots: undefined
     }
   },
 
@@ -19,35 +17,35 @@ var ResultList = React.createClass({
         success: function(searchresults){
           this.setState({
             nearbyspots: searchresults["nearbyspots"],
-            renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)
           })
         }.bind(component)
       })
     })
   },
 
-  getResults: function(direction){
-    if (direction == "Previous"){
-      this.state.index -= 10
+  render: function(){
+    return <ResultList nearbyspots={this.state.nearbyspots}/>
+  }
+})
+
+var ResultList = React.createClass({
+  getInitialState: function(){
+    return{
+      nearbyspots: this.props.nearbyspots,
+      index: 0
     }
-    else{
-       this.state.index += 10
-    }
-    this.setState({
-      renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index+9)
-    })
   },
 
   goBack: function(){
-    this.getResults("Previous")
+    this.setState({index: this.state.index -= 10})
   },
 
   goForward: function(){
-    this.getResults("Next")
+    this.setState({index: this.state.index += 10})
   },
 
   render: function(){
-    if ( !this.state.nearbyspots ) {
+    if ( !this.props.nearbyspots ) {
       return <div>Please wait..</div>
     }
     if (this.state.index < 90){
@@ -56,7 +54,8 @@ var ResultList = React.createClass({
     if (this.state.index > 0){
       var prev = <a className="noclick" onClick={this.goBack}>Previous</a>
     }
-    var places = this.state.renderspots
+
+    var places = this.props.nearbyspots.slice(this.state.index, this.state.index + 9)
     var locations = places.map(function(place){
       return(
         <Result
@@ -77,6 +76,7 @@ var ResultList = React.createClass({
     )
   }
 })
+
 
 var Result = React.createClass({
   getInitialState: function(){
