@@ -16,7 +16,7 @@ var ResultListContainer = React.createClass({
         url: '/nearbylocations',
         success: function(searchresults){
           this.setState({
-            nearbyspots: searchresults["nearbyspots"],
+            nearbyspots: searchresults["nearbyspots"]
           })
         }.bind(component)
       })
