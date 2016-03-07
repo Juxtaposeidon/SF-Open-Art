@@ -31,7 +31,6 @@ var ResultListContainer = React.createClass({
 var ResultList = React.createClass({
   getInitialState: function(){
     return{
-      nearbyspots: this.props.nearbyspots,
       index: 0
     }
   },
@@ -60,6 +59,7 @@ var ResultList = React.createClass({
       return(
         <Result
           name={place.title}
+          link= {"artists/" + place.artist}
           artist={place.artist}
           address={place.address}
           latitude={place.latitude}
@@ -79,25 +79,14 @@ var ResultList = React.createClass({
 
 
 var Result = React.createClass({
-  getInitialState: function(){
-    return{
-      name: this.props.name,
-      link: "artists/" + this.props.artist,
-      artist: this.props.artist,
-      address: this.props.address,
-      latitude: this.props.latitude,
-      longitude: this.props.longitude
-    }
-  },
-
   render: function(){
     return(
       <p className = "nearbylocation">
-       Piece Title: {this.state.name}
+       Piece Title: {this.props.name}
       <br/>
-      Artist: {this.state.artist} (<a href={this.state.link}>Search</a>)
+      Artist: {this.props.artist} (<a href={this.props.link}>Search</a>)
       <br/>
-      <a data-lat={this.state.latitude} data-long={this.state.longitude} data-name={this.state.name} className="address noclick">{this.state.address}</a>
+      <a data-lat={this.props.latitude} data-long={this.props.longitude} data-name={this.props.name} className="address noclick">{this.props.address}</a>
       </p>
     )
   }
