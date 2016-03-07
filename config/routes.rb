@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'locations/search' => 'locations#search'
   get 'locations/search/results' => 'locations#results'
-  resources :locations, :maps, :markers
+  resources :locations, :nearbylocations, :markers
   get 'about' => 'about#index'
   resources :artists, :constraints => { :id => /.*/ }
   # Example of regular route:

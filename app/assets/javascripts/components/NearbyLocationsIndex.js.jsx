@@ -17,7 +17,7 @@ var ResultList = React.createClass({
           'lat': position.coords.latitude,
           'long': position.coords.longitude
         },
-        url: '/locations',
+        url: '/nearbylocations',
         success: function(searchresults){
           this.setState({
             nearbyspots: searchresults["nearbyspots"],
