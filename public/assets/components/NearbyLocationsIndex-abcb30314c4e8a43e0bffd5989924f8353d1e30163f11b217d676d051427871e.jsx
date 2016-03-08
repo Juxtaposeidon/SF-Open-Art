@@ -1,7 +1,9 @@
-var ResultListContainer = React.createClass({
+var ResultList = React.createClass({
   getInitialState: function(){
     return{
-      nearbyspots: undefined
+      nearbyspots: undefined,
+      renderspots: undefined,
+      index: 0
     }
   },
 
@@ -16,35 +18,36 @@ var ResultListContainer = React.createClass({
         url: '/nearbylocations',
         success: function(searchresults){
           this.setState({
-            nearbyspots: searchresults["nearbyspots"]
+            nearbyspots: searchresults["nearbyspots"],
+            renderspots:searchresults["nearbyspots"].slice(this.state.index, this.state.index+9)
           })
         }.bind(component)
       })
     })
   },
 
-  render: function(){
-    return <ResultList nearbyspots={this.state.nearbyspots}/>
-  }
-})
-
-var ResultList = React.createClass({
-  getInitialState: function(){
-    return{
-      index: 0
+  getResults: function(direction){
+    if (direction == "Previous"){
+      this.state.index -= 10
     }
+    else{
+       this.state.index += 10
+    }
+    this.setState({
+      renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index+9)
+    })
   },
 
   goBack: function(){
-    this.setState({index: this.state.index -= 10})
+    this.getResults("Previous")
   },
 
   goForward: function(){
-    this.setState({index: this.state.index += 10})
+    this.getResults("Next")
   },
 
   render: function(){
-    if ( !this.props.nearbyspots ) {
+    if ( !this.state.nearbyspots ) {
       return <div>Please wait..</div>
     }
     if (this.state.index < 90){
@@ -53,13 +56,11 @@ var ResultList = React.createClass({
     if (this.state.index > 0){
       var prev = <a className="noclick" onClick={this.goBack}>Previous</a>
     }
-
-    var places = this.props.nearbyspots.slice(this.state.index, this.state.index + 9)
+    var places = this.state.renderspots
     var locations = places.map(function(place){
       return(
         <Result
           name={place.title}
-          link= {"artists/" + place.artist}
           artist={place.artist}
           address={place.address}
           latitude={place.latitude}
@@ -77,16 +78,26 @@ var ResultList = React.createClass({
   }
 })
 
-
 var Result = React.createClass({
+  getInitialState: function(){
+    return{
+      name: this.props.name,
+      link: "artists/" + this.props.artist,
+      artist: this.props.artist,
+      address: this.props.address,
+      latitude: this.props.latitude,
+      longitude: this.props.longitude
+    }
+  },
+
   render: function(){
     return(
       <p className = "nearbylocation">
-       Piece Title: {this.props.name}
+       Piece Title: {this.state.name}
       <br/>
-      Artist: {this.props.artist} (<a href={this.props.link}>Search</a>)
+      Artist: {this.state.artist} (<a href={this.state.link}>Search</a>)
       <br/>
-      <a data-lat={this.props.latitude} data-long={this.props.longitude} data-name={this.props.name} className="address noclick">{this.props.address}</a>
+      <a data-lat={this.state.latitude} data-long={this.state.longitude} data-name={this.state.name} className="address noclick">{this.state.address}</a>
       </p>
     )
   }

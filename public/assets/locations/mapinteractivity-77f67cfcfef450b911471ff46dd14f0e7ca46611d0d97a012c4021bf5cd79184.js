@@ -21,7 +21,7 @@ $(document).ready(function() {
         }
       })
       .done(function(data){
-        if(lastmarker){
+        if(lastmarker != undefined){
           lastmarker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
         }
         $('#fullmapdesc').html('<h5><i>' + data.title + '</i> by ' + data.artist + '<br>Address: ' + data.address + '</h5>')
@@ -36,10 +36,10 @@ $(document).ready(function() {
       url: '/markers'
     })
     .done(function(data){
-      data.forEach(function(item){
-        var point = new google.maps.LatLng(item.latitude, item.longitude);
-        placeMarker(point, item.id)
-      })
+      for(var place in data){
+        var point = new google.maps.LatLng(data[place].latitude, data[place].longitude);
+        placeMarker(point, data[place].id)
+      }
     })
   }
 
