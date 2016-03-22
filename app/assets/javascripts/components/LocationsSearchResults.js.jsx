@@ -1,14 +1,14 @@
 var LocationSearches = React.createClass({
-  render: function(){
-    if(this.props.results.length < 1){
-      return(
+  render: function () {
+    if (this.props.results.length < 1) {
+      return (
         <div>
           Your search request returns no results. Please try entering another location.
         </div>
       )
     }
-    var resultlist = (this.props.results).map(function(item){
-      return(
+    var resultlist = (this.props.results).map(function (item) {
+      return (
         <LSResult
           title={item.title}
           artist={item.artist}
@@ -26,10 +26,17 @@ var LocationSearches = React.createClass({
 })
 
 var LSResult = React.createClass({
-  render: function(){
-    return(
+  render: function () {
+    return (
       <p>
-        <a className= "noclick result" data-latitude={this.props.latitude} data-longitude={this.props.longitude} data-address={this.props.address}>{this.props.title}</a>
+        <a
+          className= "noclick result"
+          data-latitude={this.props.latitude}
+          data-longitude={this.props.longitude}
+          data-address={this.props.address}
+        >
+          {this.props.title}
+        </a>
         <br/>
         Search by artist: <a href={this.props.artistlink}>{this.props.artist}</a>
       </p>
