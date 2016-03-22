@@ -32105,27 +32105,26 @@ return jQuery;
 var ArtistList = React.createClass({
   displayName: "ArtistList",
 
-  getDefaultProps: function () {
-    return {
-      artists: []
-    };
-  },
-  getInitialState: function () {
-    return {
-      artists: this.props.artists
-    };
-  },
   render: function () {
-    var allartists = this.state.artists;
+    var allartists = this.props.artists;
     var artistlength = allartists.length / 3;
     var artistList1 = allartists.slice(0, artistlength).map(function (person) {
-      return React.createElement(Artist, { name: person });
+      return React.createElement(Artist, {
+        name: person,
+        link: "/artists/" + person
+      });
     });
     var artistList2 = allartists.slice(artistlength, artistlength * 2).map(function (person) {
-      return React.createElement(Artist, { name: person });
+      return React.createElement(Artist, {
+        name: person,
+        link: "/artists/" + person
+      });
     });
     var artistList3 = allartists.slice(artistlength * 2, artistlength * 3).map(function (person) {
-      return React.createElement(Artist, { name: person });
+      return React.createElement(Artist, {
+        name: person,
+        link: "/artists/" + person
+      });
     });
 
     return React.createElement(
@@ -32161,97 +32160,235 @@ var ArtistList = React.createClass({
 var Artist = React.createClass({
   displayName: "Artist",
 
-  getDefaultProps: function () {
-    return {
-      name: "",
-      link: ""
-    };
-  },
-  getInitialState: function () {
-    return {
-      link: "artists/" + this.props.name,
-      name: this.props.name
-    };
-  },
   render: function () {
     return React.createElement(
       "p",
       null,
       React.createElement(
         "a",
-        { href: this.state.link },
-        this.state.name
+        { href: this.props.link },
+        this.props.name
       )
     );
   }
 });
 var ArtistPage = React.createClass({
-  displayName: 'ArtistPage',
+  displayName: "ArtistPage",
 
-  getDefaultProps: function () {
-    return {
-      artist: '',
-      works: []
-    };
-  },
-  getInitialState: function () {
-    return {
-      artist: this.props.artist,
-      works: this.props.works
-    };
-  },
   render: function () {
-    var art = this.state.works;
-    var artistwork = art.map(function (item) {
+    var art = this.props.works;
+    var artistworks = art.map(function (item) {
       index = art.indexOf(item);
-      return React.createElement(ArtistWork, { title: item.title,
+      return React.createElement(ArtistWork, {
+        title: item.title,
         address: item.address,
         longitude: item.longitude,
         latitude: item.latitude,
-        key: index });
+        key: index
+      });
     });
 
     return React.createElement(
-      'div',
+      "div",
       null,
       React.createElement(
-        'h3',
+        "h3",
         null,
-        'Works of ',
-        this.state.artist
+        "Works of ",
+        this.props.artist
       ),
-      artistwork
+      artistworks
     );
   }
 });
 
 var ArtistWork = React.createClass({
-  displayName: 'ArtistWork',
+  displayName: "ArtistWork",
 
-  getDefaultProps: function () {
-    return {
-      title: '',
-      address: "",
-      longitude: undefined,
-      latitude: undefined
-    };
-  },
+  render: function () {
+    return React.createElement(
+      "p",
+      null,
+      React.createElement(
+        "a",
+        { className: "artname noclick", "data-latitude": this.props.latitude, "data-longitude": this.props.longitude, "data-address": this.props.address },
+        this.props.title
+      )
+    );
+  }
+});
+var LocationSearches = React.createClass({
+  displayName: "LocationSearches",
+
+  render: function () {
+    if (this.props.results.length < 1) {
+      return React.createElement(
+        "div",
+        null,
+        "Your search request returns no results. Please try entering another location."
+      );
+    }
+    var resultlist = this.props.results.map(function (item) {
+      return React.createElement(LSResult, {
+        title: item.title,
+        artist: item.artist,
+        address: item.address,
+        latitude: item.latitude,
+        longitude: item.longitude,
+        artistlink: "/artists/" + item.artist,
+        key: item.id
+      });
+    });
+    return React.createElement(
+      "div",
+      null,
+      resultlist
+    );
+  }
+
+});
+
+var LSResult = React.createClass({
+  displayName: "LSResult",
+
+  render: function () {
+    return React.createElement(
+      "p",
+      null,
+      React.createElement(
+        "a",
+        { className: "noclick result", "data-latitude": this.props.latitude, "data-longitude": this.props.longitude, "data-address": this.props.address },
+        this.props.title
+      ),
+      React.createElement("br", null),
+      "Search by artist: ",
+      React.createElement(
+        "a",
+        { href: this.props.artistlink },
+        this.props.artist
+      )
+    );
+  }
+});
+var ResultListContainer = React.createClass({
+  displayName: 'ResultListContainer',
+
   getInitialState: function () {
     return {
-      title: this.props.title,
-      address: this.props.address,
-      longitude: this.props.longitude,
-      latitude: this.props.latitude
+      nearbyspots: undefined
     };
   },
+
+  componentDidMount: function () {
+    var component = this;
+    navigator.geolocation.getCurrentPosition(function (position) {
+      $.ajax({
+        data: {
+          'lat': position.coords.latitude,
+          'long': position.coords.longitude
+        },
+        url: '/nearbylocations',
+        success: (function (searchresults) {
+          this.setState({
+            nearbyspots: searchresults["nearbyspots"]
+          });
+        }).bind(component)
+      });
+    });
+  },
+
+  render: function () {
+    return React.createElement(ResultList, { nearbyspots: this.state.nearbyspots });
+  }
+});
+
+var ResultList = React.createClass({
+  displayName: 'ResultList',
+
+  getInitialState: function () {
+    return {
+      index: 0
+    };
+  },
+
+  goBack: function () {
+    this.setState({ index: this.state.index -= 10 });
+  },
+
+  goForward: function () {
+    this.setState({ index: this.state.index += 10 });
+  },
+
+  render: function () {
+    if (!this.props.nearbyspots) {
+      return React.createElement(
+        'div',
+        null,
+        'Please wait..'
+      );
+    }
+    if (this.state.index < 90) {
+      var next = React.createElement(
+        'a',
+        { className: 'noclick', onClick: this.goForward },
+        'Next'
+      );
+    }
+    if (this.state.index > 0) {
+      var prev = React.createElement(
+        'a',
+        { className: 'noclick', onClick: this.goBack },
+        'Previous'
+      );
+    }
+
+    var places = this.props.nearbyspots.slice(this.state.index, this.state.index + 9);
+    var locations = places.map(function (place) {
+      return React.createElement(Result, {
+        name: place.title,
+        link: "artists/" + place.artist,
+        artist: place.artist,
+        address: place.address,
+        latitude: place.latitude,
+        longitude: place.longitude,
+        key: place.id
+      });
+    });
+    return React.createElement(
+      'div',
+      { id: 'locations' },
+      locations,
+      prev,
+      ' ',
+      next
+    );
+  }
+});
+
+var Result = React.createClass({
+  displayName: 'Result',
+
   render: function () {
     return React.createElement(
       'p',
-      null,
+      { className: 'nearbylocation' },
+      'Piece Title: ',
+      this.props.name,
+      React.createElement('br', null),
+      'Artist: ',
+      this.props.artist,
+      ' (',
       React.createElement(
         'a',
-        { className: 'artname noclick', 'data-latitude': this.state.latitude, 'data-longitude': this.state.longitude, 'data-address': this.state.address },
-        this.state.title
+        { href: this.props.link },
+        'Search'
+      ),
+      ')',
+      React.createElement('br', null),
+      React.createElement(
+        'a',
+        { 'data-lat': this.props.latitude, 'data-long': this.props.longitude, 'data-name': this.props.name, className: 'address noclick' },
+        this.props.address
       )
     );
   }
@@ -32259,20 +32396,15 @@ var ArtistWork = React.createClass({
 var Navbar = React.createClass({
   displayName: "Navbar",
 
-  getInitialState: function () {
-    return {
-      links: this.props.tabs,
-      logolink: this.props.logolink,
-      logo: this.props.image
-    };
-  },
   render: function () {
-    var tabs = this.state.links;
+    var tabs = this.props.tabs;
     var linktext = tabs.map(function (tab) {
       tabindex = tabs.indexOf(tab);
-      return React.createElement(NavTab, { link: tab.link,
+      return React.createElement(NavTab, {
+        link: tab.link,
         key: tabindex,
-        text: tab.text });
+        text: tab.text
+      });
     });
     return React.createElement(
       "header",
@@ -32291,8 +32423,8 @@ var Navbar = React.createClass({
               { id: "logotd" },
               React.createElement(
                 "a",
-                { href: this.state.logolink },
-                React.createElement("img", { src: this.state.logo, id: "logo" })
+                { href: this.props.logolink },
+                React.createElement("img", { src: this.props.image, id: "logo" })
               )
             ),
             linktext
@@ -32306,229 +32438,14 @@ var Navbar = React.createClass({
 var NavTab = React.createClass({
   displayName: "NavTab",
 
-  getInitialState: function () {
-    return {
-      link: this.props.link,
-      text: this.props.text
-    };
-  },
   render: function () {
     return React.createElement(
       "td",
       { className: "menuitem" },
       React.createElement(
         "a",
-        { href: this.state.link },
-        this.state.text
-      )
-    );
-  }
-});
-var ResultList = React.createClass({
-  displayName: 'ResultList',
-
-  getInitialState: function () {
-    return {
-      nearbyspots: undefined,
-      renderspots: undefined,
-      showprev: undefined,
-      shownext: undefined,
-      index: 0
-    };
-  },
-  componentDidMount: function () {
-    var react = this;
-    navigator.geolocation.getCurrentPosition(function (position) {
-      $.ajax({
-        data: { 'lat': position.coords.latitude, 'long': position.coords.longitude },
-        url: '/locations',
-        success: (function (searchresults) {
-          this.setState({ nearbyspots: searchresults["nearbyspots"], showprev: searchresults["prev"], shownext: searchresults["next"], renderspots: searchresults["nearbyspots"].slice(this.state.index, this.state.index + 9) });
-        }).bind(react)
-      });
-    });
-  },
-  getResults: function (direction) {
-    if (direction == "Previous") {
-      this.state.index -= 10;
-    } else {
-      this.state.index += 10;
-    }
-    this.setState({ renderspots: this.state.nearbyspots.slice(this.state.index, this.state.index + 9) });
-  },
-  render: function () {
-    if (!this.state.nearbyspots) {
-      return React.createElement(
-        'div',
-        null,
-        'Please wait..'
-      );
-    }
-    if (this.state.index < 90) {
-      var next = React.createElement(
-        'a',
-        { className: 'noclick', onClick: this.getResults.bind(this, "Next") },
-        'Next'
-      );
-    }
-    if (this.state.index > 0) {
-      var prev = React.createElement(
-        'a',
-        { className: 'noclick', onClick: this.getResults.bind(this, "Previous") },
-        'Previous'
-      );
-    }
-    var places = this.state.renderspots;
-    var locations = places.map(function (place) {
-      return React.createElement(Result, { name: place.title,
-        artist: place.artist,
-        address: place.address,
-        latitude: place.latitude,
-        longitude: place.longitude,
-        key: place.id });
-    });
-    return React.createElement(
-      'div',
-      { id: 'locations' },
-      locations,
-      prev,
-      ' ',
-      next
-    );
-  }
-});
-
-var Result = React.createClass({
-  displayName: 'Result',
-
-  getInitialProps: function () {
-    return {
-      name: '',
-      link: '',
-      artist: '',
-      address: '',
-      latitude: '',
-      longitude: ''
-    };
-  },
-  getInitialState: function () {
-    return {
-      name: this.props.name,
-      link: "artists/" + this.props.artist,
-      artist: this.props.artist,
-      address: this.props.address,
-      latitude: this.props.latitude,
-      longitude: this.props.longitude
-    };
-  },
-
-  render: function () {
-    return React.createElement(
-      'p',
-      { className: 'nearbylocation' },
-      'Piece Title: ',
-      this.state.name,
-      React.createElement('br', null),
-      'Artist: ',
-      this.state.artist,
-      ' (',
-      React.createElement(
-        'a',
-        { href: this.state.link },
-        'Search'
-      ),
-      ')',
-      React.createElement('br', null),
-      React.createElement(
-        'a',
-        { 'data-lat': this.state.latitude, 'data-long': this.state.longitude, 'data-name': this.state.name, className: 'address noclick' },
-        this.state.address
-      )
-    );
-  }
-});
-var LocationSearches = React.createClass({
-  displayName: "LocationSearches",
-
-  getInitialProps: function () {
-    return {
-      results: []
-    };
-  },
-
-  getInitialState: function () {
-    return {
-      results: this.props.results
-    };
-  },
-
-  render: function () {
-    if (this.state.results.length < 1) {
-      return React.createElement(
-        "div",
-        null,
-        "Your search request returns no results. Please try entering another location."
-      );
-    }
-    var resultlist = this.state.results.map(function (item) {
-      return React.createElement(LSResult, { title: item.title,
-        artist: item.artist,
-        address: item.address,
-        latitude: item.latitude,
-        longitude: item.longitude,
-        key: item.id });
-    });
-    return React.createElement(
-      "div",
-      null,
-      resultlist
-    );
-  }
-
-});
-
-var LSResult = React.createClass({
-  displayName: "LSResult",
-
-  getInitialProps: function () {
-    return {
-      title: undefined,
-      artist: undefined,
-      address: undefined,
-      longitude: undefined,
-      latitude: undefined,
-      artistlink: undefined,
-      key: undefined
-    };
-  },
-
-  getInitialState: function () {
-    return {
-      title: this.props.title,
-      artist: this.props.artist,
-      address: this.props.address,
-      latitude: this.props.latitude,
-      longitude: this.props.longitude,
-      artistlink: "/artists/" + this.props.artist,
-      key: this.props.key
-    };
-  },
-
-  render: function () {
-    return React.createElement(
-      "p",
-      null,
-      React.createElement(
-        "a",
-        { className: "noclick result", "data-latitude": this.state.latitude, "data-longitude": this.state.longitude, "data-address": this.state.address },
-        this.props.title
-      ),
-      React.createElement("br", null),
-      "Search by artist: ",
-      React.createElement(
-        "a",
-        { href: this.state.artistlink },
-        this.state.artist
+        { href: this.props.link },
+        this.props.text
       )
     );
   }

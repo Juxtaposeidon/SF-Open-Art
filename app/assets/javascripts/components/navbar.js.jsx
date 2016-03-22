@@ -1,9 +1,9 @@
 var Navbar = React.createClass({
-  render: function(){
+  render: function () {
     var tabs = this.props.tabs
-    var linktext = tabs.map(function(tab){
+    var linktext = tabs.map(function (tab) {
       tabindex = tabs.indexOf(tab)
-      return(
+      return (
         <NavTab
           link={tab.link}
           key={tabindex}
@@ -11,13 +11,13 @@ var Navbar = React.createClass({
         />
       )
     })
-    return(
+    return (
       <header>
         <table id="menutable">
           <tbody>
             <tr id="menurow">
                 <td id ="logotd">
-                <a href={this.props.logolink}><img src={this.props.image} id="logo"></img></a>
+                <a href={this.props.logolink}><img src={this.props.image} id="logo"/></a>
                   </td>
               {linktext}
             </tr>
@@ -29,8 +29,8 @@ var Navbar = React.createClass({
 })
 
 var NavTab = React.createClass({
-  render: function(){
-    return(
+  render: function () {
+    return (
       <td className="menuitem">
         <a href={this.props.link}>{this.props.text}</a>
       </td>

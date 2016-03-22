@@ -1,7 +1,7 @@
 var ArtistPage = React.createClass({
-  render: function(){
+  render: function () {
     var art = this.props.works
-    var artistworks = art.map(function(item){
+    var artistworks = art.map(function (item) {
       index = art.indexOf(item)
       return (
         <ArtistWork
@@ -14,7 +14,7 @@ var ArtistPage = React.createClass({
       )
     })
 
-    return(
+    return (
       <div>
       <h3>Works of {this.props.artist}</h3>
         {artistworks}
@@ -24,9 +24,18 @@ var ArtistPage = React.createClass({
 })
 
 var ArtistWork = React.createClass({
-  render: function(){
-    return(
-      <p><a className="artname noclick" data-latitude={this.props.latitude} data-longitude={this.props.longitude} data-address={this.props.address}>{this.props.title}</a></p>
+  render: function () {
+    return (
+      <p>
+        <a
+          className="artname noclick"
+          data-latitude={this.props.latitude}
+          data-longitude={this.props.longitude}
+          data-address={this.props.address}
+        >
+          {this.props.title}
+        </a>
+      </p>
     )
   }
 })
