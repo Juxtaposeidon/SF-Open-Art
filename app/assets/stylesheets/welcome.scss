@@ -36,8 +36,6 @@ header {
 }
 
 .menuitem a, .menuitem a:visited, .menuitem a:link {
-  text-decoration: none;
-  color:white;
   padding: 25px;
 }
 
@@ -45,16 +43,8 @@ header {
   outline: 2px solid white;
 }
 
-#menutable {
-  height: 50px;
-}
-
 body {
   font-family: verdana;
-}
-
-a:link, a:visited {
-  color: #0000cc;
 }
 
 .noclick {

@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>SF Open Art</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
   <%= csrf_meta_tags %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE-897CDl9CnFtZDVIQEQkd409ibKqcmQ" type="text/javascript"></script>
 </head>
@@ -21,7 +21,7 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-regular" id="headline">
-          <li><%= image_tag 'artlogo.png', id: 'logo' %></li>
+          <%= link_to image_tag('artlogo.png', id: 'logo'), root_path %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class='menuitem'><%=link_to 'Show Nearby Art', nearbylocations_path %></li>
