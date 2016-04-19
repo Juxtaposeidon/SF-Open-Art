@@ -10,8 +10,29 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE-897CDl9CnFtZDVIQEQkd409ibKqcmQ" type="text/javascript"></script>
 </head>
 <body>
-<%= react_component('Navbar', { tabs: [{text: "Show Nearby Art", link: nearbylocations_path}, {text: "Search by Location", link: locations_search_path}, {text: "Search by Artist", link: artists_path}, {text: "Show Full Map", link: locations_path}, {text: "About", link: about_path}], logolink: root_path, image: image_path("artlogo.png") }) %>
-
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-regular" id="headline">
+          <li><%= image_tag 'artlogo.png', id: 'logo' %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class='menuitem'><%=link_to 'Show Nearby Art', nearbylocations_path %></li>
+          <li class='menuitem'><%=link_to 'Search by Location', locations_search_path %></li>
+          <li class='menuitem'><%=link_to 'Search by Artist', artists_path %></li>
+          <li class='menuitem'><%=link_to 'Show Full Map', locations_path %></li>
+          <li class='menuitem'><%=link_to 'About', about_path %></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 <div id="main">
   <%= yield %>
 </div>
