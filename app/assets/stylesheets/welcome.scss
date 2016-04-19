@@ -1,6 +1,68 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#logo {
+  height:80px;
+  width:auto;
+  margin-left: 5px;
+}
+
+#logotd {
+  text-align:left;
+  width:10%;
+}
+
+#main {
+  margin-top: 125px;
+}
+
+header {
+  width:100%;
+  height:100px;
+  background-color: black;
+  margin: 0px;
+  top: 0;
+  left: 0;
+  right:0;
+  position:fixed;
+  z-index: 1;
+  box-shadow: 10px 5px 5px #888888;
+}
+
+.menuitem {
+  color: white;
+  font-size: 1.1em;
+  width: 20%;
+  text-align: center;
+}
+
+.menuitem a, .menuitem a:visited, .menuitem a:link {
+  text-decoration: none;
+  color:white;
+  padding: 25px;
+}
+
+.menuitem a:hover {
+  outline: 2px solid white;
+}
+
+#menutable {
+  height: 50px;
+}
+
+body {
+  font-family: verdana;
+}
+
+a:link, a:visited {
+  color: #0000cc;
+}
+
+.noclick {
+  color: #0000cc;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .wrapper {
   margin-left:-8px;
   margin-top:-25px;

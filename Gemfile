@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'react-rails', '~> 1.5.0'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'geocoder'
 gem 'whenever', require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
